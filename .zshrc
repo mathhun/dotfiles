@@ -24,6 +24,8 @@ SAVEHIST=100000
 setopt extended_history
 function histall { history -E 1 }
 
+# PATH
+export PATH=$HOME/.cask/bin:$PATH
 
 #----------------------------------------------------------------------
 # Zsh options

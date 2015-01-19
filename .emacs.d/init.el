@@ -24,9 +24,6 @@
       scroll-margin 0
       scroll-step 1)
 
-;; input method
-(mac-auto-ascii-mode 1)
-
 ;; cask
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
