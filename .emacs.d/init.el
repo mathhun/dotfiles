@@ -16,6 +16,14 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
 
+;; C-w
+(defun kill-region-or-backward-word ()
+  "If the region is active and non-empty, call `kill-region'. Otherwise, call `backward-kill-word'."
+  (interactive)
+  (call-interactively
+   (if (use-region-p) 'kill-region 'backward-kill-word)))
+(global-set-key "\C-w" 'kill-region-or-backward-word)
+
 ;; color
 (load-theme 'manoj-dark t)
 
@@ -27,3 +35,6 @@
 ;; cask
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
+
+;; dired
+(put 'dired-find-alternate-file 'disabled nil)
