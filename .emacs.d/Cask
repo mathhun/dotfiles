@@ -1,3 +1,4 @@
+;; -*- mode: emacs-lisp -*-
 (source gnu)
 (source melpa)
 
@@ -25,3 +26,14 @@
 (depends-on "use-package")
 (depends-on "web-mode")
 (depends-on "yasnippet")
+;; default
+
+(depends-on "auto-complete")
+(depends-on "flymake")
+(depends-on "flymake-cursor")
+(depends-on "flymake-easy")
+(depends-on "magit")
+
+;; programming
+(depends-on "python-mode")
+(depends-on "flymake-python-pyflakes")
