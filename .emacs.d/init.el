@@ -13,14 +13,14 @@
 (setq aut-save-default nil)
 ;; tab
 (setq-default tab-width 4
-          indent-tabs-mode nil)
+              indent-tabs-mode nil)
 ;; path
 (setq exec-path (cons (concat (getenv "HOME") "/.pyenv/shims") exec-path))
 
 ;; frame size
 (add-to-list 'default-frame-alist '(left . -1))
 (add-to-list 'default-frame-alist '(top . 0))
-(add-to-list 'default-frame-alist '(height . 60))
+(add-to-list 'default-frame-alist (cons 'height (if (= (display-pixel-height) 1080) 64 60)))
 (add-to-list 'default-frame-alist '(width . 130))
 
 ;; key binding
@@ -57,6 +57,7 @@
     ad-do-it))
 
 ;; cask
+; curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
