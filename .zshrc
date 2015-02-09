@@ -21,6 +21,7 @@ setopt extended_history
 function histall { history -E 1 }
 
 # PATH
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=$HOME/.cask/bin:$PATH
 
 MAILPATH="/var/mail/$USER?${fg[green]}New mail arrived in \$_."

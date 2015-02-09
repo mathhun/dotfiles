@@ -56,8 +56,11 @@
   (let ((use-dialog-box nil))
     ad-do-it))
 
+;;
 ;; cask
-; curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
+;;
+
+;; curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
@@ -118,7 +121,14 @@
 ;; flymake
 (setq flymake-gui-warnings-enabled nil)
 
+;;
 ;; python
+;;
+
+;; pip install autopep8
+;; pip install rope jedi ; auto complete
+;; pip install pyflakes  ; flymake
+
 (add-hook 'python-mode-hook
       (lambda ()
         (define-key python-mode-map (kbd "\C-m") 'newline-and-indent)
