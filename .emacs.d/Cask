@@ -34,6 +34,13 @@
 (depends-on "flymake-easy")
 (depends-on "magit")
 
+;; helm
+(depends-on "helm")
+(depends-on "helm-git-grep")
+(depends-on "helm-gtags")
+(depends-on "helm-ls-git")
+(depends-on "helm-themes")
+
 ;; programming
 (depends-on "python-mode")
 (depends-on "flymake-python-pyflakes")
