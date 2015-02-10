@@ -21,7 +21,7 @@
 (add-to-list 'default-frame-alist '(left . -1))
 (add-to-list 'default-frame-alist '(top . 0))
 (add-to-list 'default-frame-alist (cons 'height (if (= (display-pixel-height) 1080) 64 60)))
-(add-to-list 'default-frame-alist '(width . 130))
+(add-to-list 'default-frame-alist (cons 'width  (if (= (display-pixel-height) 1080) 140 130)))
 
 ;; key binding
 (global-set-key "\C-h" 'delete-backward-char)
@@ -29,6 +29,7 @@
 (setq mac-command-key-is-meta t)
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
+(global-set-key "\C-m" 'newline-and-indent)
 
 ;; C-w
 (defun kill-region-or-backward-word ()
@@ -39,7 +40,7 @@
 (global-set-key "\C-w" 'kill-region-or-backward-word)
 
 ;; color
-(load-theme 'manoj-dark t)
+(load-theme 'deeper-blue t)
 
 ;; cursor
 (setq scroll-conservatively 35

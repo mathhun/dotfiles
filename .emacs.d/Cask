@@ -44,3 +44,4 @@
 ;; programming
 (depends-on "python-mode")
 (depends-on "flymake-python-pyflakes")
+(depends-on "php-mode")
