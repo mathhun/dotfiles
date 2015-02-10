@@ -33,6 +33,8 @@
 (depends-on "flymake-cursor")
 (depends-on "flymake-easy")
 (depends-on "magit")
+(depends-on "elscreen" :git "git@github.com:knu/elscreen.git")
+(depends-on "pbcopy")
 
 ;; helm
 (depends-on "helm")
