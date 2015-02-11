@@ -144,6 +144,8 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias grep='grep --color'
 alias realias='$EDITOR ~/.aliases; source ~/.aliases'
+alias so='source ~/.zshrc'
+alias dot='cd ~/dotfiles'
 
 alias -g L='| TERM=vt100 less'
 alias -g LL='2>&1 | TERM=vt100 less'
