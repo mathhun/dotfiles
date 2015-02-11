@@ -10,7 +10,7 @@
 (setq ring-bell-function 'ignore)
 ;; no backup
 (setq make-backup-files nil)
-(setq aut-save-default nil)
+(setq auto-save-default nil)
 ;; tab
 (setq-default tab-width 4
               indent-tabs-mode nil)
@@ -24,12 +24,13 @@
 (add-to-list 'default-frame-alist (cons 'width  (if (= (display-pixel-height) 1080) 140 130)))
 
 ;; key binding
-(global-set-key "\C-h" 'delete-backward-char)
 (setq mac-option-key-is-meta nil)
 (setq mac-command-key-is-meta t)
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
+(global-set-key "\C-h" 'delete-backward-char)
 (global-set-key "\C-m" 'newline-and-indent)
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; C-w
 (defun kill-region-or-backward-word ()
@@ -82,6 +83,9 @@
   (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
   (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
   (define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
+
+  ;; no prompt for new file
+  (setq helm-ff-newfile-prompt-p nil)
 
   ;; Disable helm in some functions
   (add-to-list 'helm-completing-read-handlers-alist '(find-alternate-file . nil))
