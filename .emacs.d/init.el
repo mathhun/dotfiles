@@ -14,6 +14,9 @@
 ;; tab
 (setq-default tab-width 4
               indent-tabs-mode nil)
+(fset 'yes-or-no-p 'y-or-n-p)
+(setq cursor-in-non-selected-windows nil)
+
 ;; path
 (setq exec-path (cons (concat (getenv "HOME") "/.pyenv/shims") exec-path))
 
@@ -23,6 +26,15 @@
 (add-to-list 'default-frame-alist (cons 'height (if (= (display-pixel-height) 1080) 64 60)))
 (add-to-list 'default-frame-alist (cons 'width  (if (= (display-pixel-height) 1080) 140 130)))
 
+(defun ignore-error-wrapper (fn)
+  "Funtion return new function that ignore errors.
+   The function wraps a function with `ignore-errors' macro."
+  (lexical-let ((fn fn))
+    (lambda ()
+      (interactive)
+      (ignore-errors
+        (funcall fn)))))
+
 ;; key binding
 (setq mac-option-key-is-meta nil)
 (setq mac-command-key-is-meta t)
@@ -30,7 +42,11 @@
 (setq mac-option-modifier nil)
 (global-set-key "\C-h" 'delete-backward-char)
 (global-set-key "\C-m" 'newline-and-indent)
-(fset 'yes-or-no-p 'y-or-n-p)
+;; window move
+(global-set-key (kbd "C-c h") (ignore-error-wrapper 'windmove-left))
+(global-set-key (kbd "C-c l") (ignore-error-wrapper 'windmove-right))
+(global-set-key (kbd "C-c k") (ignore-error-wrapper 'windmove-up))
+(global-set-key (kbd "C-c j") (ignore-error-wrapper 'windmove-down))
 
 ;; C-w
 (defun kill-region-or-backward-word ()
