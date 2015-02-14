@@ -5,6 +5,7 @@
 (blink-cursor-mode 0)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
+(set-scroll-bar-mode nil)
 ;; no beep
 (setq visible-bell t)
 (setq ring-bell-function 'ignore)
@@ -26,6 +27,15 @@
 (add-to-list 'default-frame-alist (cons 'height (if (= (display-pixel-height) 1080) 64 60)))
 (add-to-list 'default-frame-alist (cons 'width  (if (= (display-pixel-height) 1080) 140 130)))
 
+;; key binding
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
+(global-set-key "\C-h" 'delete-backward-char)
+(global-set-key "\C-m" 'newline-and-indent)
+
+(require 'cl)
 (defun ignore-error-wrapper (fn)
   "Funtion return new function that ignore errors.
    The function wraps a function with `ignore-errors' macro."
@@ -35,18 +45,16 @@
       (ignore-errors
         (funcall fn)))))
 
-;; key binding
-(setq mac-option-key-is-meta nil)
-(setq mac-command-key-is-meta t)
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier nil)
-(global-set-key "\C-h" 'delete-backward-char)
-(global-set-key "\C-m" 'newline-and-indent)
 ;; window move
 (global-set-key (kbd "C-c h") (ignore-error-wrapper 'windmove-left))
 (global-set-key (kbd "C-c l") (ignore-error-wrapper 'windmove-right))
 (global-set-key (kbd "C-c k") (ignore-error-wrapper 'windmove-up))
 (global-set-key (kbd "C-c j") (ignore-error-wrapper 'windmove-down))
+
+;; font
+(when (eq window-system 'ns)
+  (set-face-attribute 'default nil :family "Migu 1M" :height 120)
+  (setq line-spacing 0))
 
 ;; C-w
 (defun kill-region-or-backward-word ()
