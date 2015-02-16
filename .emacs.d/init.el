@@ -24,8 +24,8 @@
 ;; frame size
 (add-to-list 'default-frame-alist '(left . -1))
 (add-to-list 'default-frame-alist '(top . 0))
-(add-to-list 'default-frame-alist (cons 'height (if (= (display-pixel-height) 1080) 64 60)))
-(add-to-list 'default-frame-alist (cons 'width  (if (= (display-pixel-height) 1080) 140 130)))
+(add-to-list 'default-frame-alist (cons 'height (if (= (display-pixel-height) 1080) 72 60)))
+(add-to-list 'default-frame-alist (cons 'width  (if (= (display-pixel-height) 1080) 160 130)))
 
 ;; key binding
 (setq mac-option-key-is-meta nil)
