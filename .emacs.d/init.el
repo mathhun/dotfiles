@@ -25,7 +25,7 @@
 (add-to-list 'default-frame-alist '(left . -1))
 (add-to-list 'default-frame-alist '(top . 0))
 (add-to-list 'default-frame-alist (cons 'height (if (= (display-pixel-height) 1080) 73 60)))
-(add-to-list 'default-frame-alist (cons 'width  (if (= (display-pixel-height) 1080) 160 130)))
+(add-to-list 'default-frame-alist (cons 'width  (if (= (display-pixel-height) 1080) 170 130)))
 
 ;; key binding
 (setq mac-option-key-is-meta nil)
@@ -199,7 +199,9 @@
 (ac-config-default)
 
 ;; flymake
-(setq flymake-gui-warnings-enabled nil)
+;;(setq flymake-gui-warnings-enabled nil)
+;; flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;;
 ;; python

@@ -22,7 +22,7 @@ function histall { history -E 1 }
 
 # PATH
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/local/bin:$HOME/bin:$PATH
 export PATH=$HOME/.cask/bin:$PATH
 
 MAILPATH="/var/mail/$USER?${fg[green]}New mail arrived in \$_."
@@ -132,6 +132,15 @@ RPROMPT="%{[35m%}%B[%/]%{[0m%}%b"
 
 
 #----------------------------------------------------------------------
+# utility
+#
+
+function path() {
+    echo $PATH | perl -nle 'print for split ":"'
+}
+
+
+#----------------------------------------------------------------------
 # Aliases
 #
 
@@ -190,14 +199,19 @@ fi
 # python
 export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PYENV_ROOT/bin:$PATH
-eval "$(pyenv init -)"
+if type pyenv >/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
 
 # ruby
 export PATH=$HOME/.rbenv/bin:$PATH
-eval "$(rbenv init -)"
+if type rbenv > /dev/null 2>&1; then
+    eval "$(rbenv init -)"
+fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
 
 #----------------------------------------------------------------------
 # package
@@ -270,8 +284,10 @@ bindkey '^xb' peco-cdr
 # anyframe version
 # bindkey '^xb' anyframe-widget-cdr
 
-# anyframe: peco-* definition framework
-antigen bundle mollifier/anyframe
+if type antigen >/dev/null 2>&1; then
+    # anyframe: peco-* definition framework
+    antigen bundle mollifier/anyframe
+fi
 
 # put history
 function peco-put-history() {
