@@ -17,6 +17,7 @@
               indent-tabs-mode nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq cursor-in-non-selected-windows nil)
+(column-number-mode t)
 
 ;; path
 (setq exec-path (cons (concat (getenv "HOME") "/.pyenv/shims") exec-path))
@@ -55,14 +56,6 @@
 (when (eq window-system 'ns)
   (set-face-attribute 'default nil :family "Migu 1M" :height 120)
   (setq line-spacing 0))
-
-;; C-w
-(defun kill-region-or-backward-word ()
-  "If the region is active and non-empty, call `kill-region'. Otherwise, call `backward-kill-word'."
-  (interactive)
-  (call-interactively
-   (if (use-region-p) 'kill-region 'backward-kill-word)))
-(global-set-key "\C-w" 'kill-region-or-backward-word)
 
 ;; color
 (load-theme 'deeper-blue t)
