@@ -24,6 +24,8 @@ function histall { history -E 1 }
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=$HOME/local/bin:$HOME/bin:$PATH
 export PATH=$HOME/.cask/bin:$PATH
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
 MAILPATH="/var/mail/$USER?${fg[green]}New mail arrived in \$_."
 MAILCHECK=10
@@ -156,6 +158,7 @@ alias grep='grep --color'
 alias realias='$EDITOR ~/.aliases; source ~/.aliases'
 alias so='source ~/.zshrc'
 alias dot='cd ~/dotfiles'
+alias ag='ag --pager=less'
 
 alias -g L='| TERM=vt100 less'
 alias -g LL='2>&1 | TERM=vt100 less'
@@ -209,8 +212,9 @@ if type rbenv > /dev/null 2>&1; then
     eval "$(rbenv init -)"
 fi
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+# go
+export GOPATH=$HOME/dev
+export PATH=$GOPATH/bin:$PATH
 
 
 #----------------------------------------------------------------------
