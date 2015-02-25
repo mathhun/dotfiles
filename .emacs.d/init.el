@@ -18,6 +18,9 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq cursor-in-non-selected-windows nil)
 (column-number-mode t)
+;; always split horizontally
+(setq split-height-threshold 0)
+(setq split-width-threshold 0)
 
 ;; path
 (setq exec-path (cons (concat (getenv "HOME") "/.pyenv/shims") exec-path))
