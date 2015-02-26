@@ -215,7 +215,7 @@ fi
 # go
 export GOPATH=$HOME/dev
 export PATH=$GOPATH/bin:$PATH
-export PATH=$HOME/opt/go/bin
+export PATH=$HOME/opt/go/bin:$PATH
 
 #----------------------------------------------------------------------
 # package
