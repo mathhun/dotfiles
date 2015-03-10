@@ -160,7 +160,7 @@ alias so='source ~/.zshrc'
 alias dot='cd ~/dotfiles'
 alias ag='ag --pager=less'
 if type hub >/dev/null 2>&1; then
-    alias git=hub
+    eval "$(hub alias -s)"
 fi
 
 alias -g L='| TERM=vt100 less'
@@ -268,8 +268,8 @@ function peco-execute-history() {
     CURSOR=$#BUFFER
     zle accept-line
 }
-zle -N peco-execute-history
-bindkey '^x^r' peco-execute-history
+#zle -N peco-execute-history
+#bindkey '^x^r' peco-execute-history
 # anyframe version
 # bindkey '^x^r' anyframe-widget-execute-history
 
@@ -286,8 +286,8 @@ function peco-cdr() {
     CURSOR=$#BUFFER
     zle accept-line
 }
-zle -N peco-cdr
-bindkey '^xb' peco-cdr
+#zle -N peco-cdr
+#bindkey '^xb' peco-cdr
 # anyframe version
 # bindkey '^xb' anyframe-widget-cdr
 
@@ -302,8 +302,8 @@ function peco-put-history() {
         | anyframe-selector-auto "$LBUFFER" \
         | anyframe-action-put
 }
-zle -N peco-put-history
-bindkey '^x^p' peco-put-history
+#zle -N peco-put-history
+#bindkey '^x^p' peco-put-history
 
 # kill process
 function peco-kill() {
@@ -312,8 +312,8 @@ function peco-kill() {
         | awk '{print $1}' \
         | anyframe-action-execute kill
 }
-zle -N peco-kill
-bindkey '^x^k' peco-kill
+#zle -N peco-kill
+#bindkey '^x^k' peco-kill
 
 # peco tmux
 function peco-tmux() {
@@ -326,3 +326,32 @@ function peco-tmux() {
 }
 zle -N peco-tmux
 bindkey '^xw' peco-tmux
+
+#
+# other anyframework bindings
+#
+bindkey '^xb' anyframe-widget-cdr
+bindkey '^x^b' anyframe-widget-checkout-git-branch
+
+bindkey '^xr' anyframe-widget-execute-history
+bindkey '^x^r' anyframe-widget-execute-history
+
+bindkey '^xp' anyframe-widget-put-history
+bindkey '^x^p' anyframe-widget-put-history
+
+bindkey '^xg' anyframe-widget-cd-ghq-repository
+bindkey '^x^g' anyframe-widget-cd-ghq-repository
+
+bindkey '^xk' anyframe-widget-kill
+bindkey '^x^k' anyframe-widget-kill
+
+bindkey '^xi' anyframe-widget-insert-git-branch
+bindkey '^x^i' anyframe-widget-insert-git-branch
+
+bindkey '^xf' anyframe-widget-insert-filename
+bindkey '^x^f' anyframe-widget-insert-filename
+
+# host specific
+if [ -f $HOME/.zshrc.local ]; then
+    source $HOME/.zshrc.local
+fi
