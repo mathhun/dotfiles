@@ -34,6 +34,7 @@
 ;; key binding
 (setq mac-option-key-is-meta nil)
 (setq mac-command-key-is-meta t)
+(define-key global-map [?¥] [?\\])
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
 (global-set-key "\C-h" 'delete-backward-char)
