@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: tfun
+# key: tfun
+# binding: direct-keybinding
+# --
+/**
+ * @test
+ */
+function $0()
+{
+}
