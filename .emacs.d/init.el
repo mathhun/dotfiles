@@ -23,7 +23,9 @@
 (setq split-width-threshold 0)
 
 ;; path
-(setq exec-path (cons (concat (getenv "HOME") "/.pyenv/shims") exec-path))
+(let ((lis (list (concat (getenv "HOME") "/.pyenv/shims")
+                 "/usr/local/bin")))
+  (setq exec-path (append lis exec-path)))
 
 ;; frame size
 (add-to-list 'default-frame-alist '(left . -1))
