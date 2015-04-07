@@ -198,8 +198,9 @@ fi
 #
 
 # perl
-if [ -e $HOME/perl5/perlbrew/etc/bashrc ]; then
-  source $HOME/perl5/perlbrew/etc/bashrc
+export PATH=$HOME/.plenv/bin:$PATH
+if type plenv >/dev/null 2>&1; then
+    eval "$(plenv init -)"
 fi
 
 # python
