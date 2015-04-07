@@ -23,7 +23,9 @@
 (setq split-width-threshold 0)
 
 ;; path
-(setq exec-path (cons (concat (getenv "HOME") "/.pyenv/shims") exec-path))
+(let ((lis (list (concat (getenv "HOME") "/.pyenv/shims")
+                 "/usr/local/bin")))
+  (setq exec-path (append lis exec-path)))
 
 ;; frame size
 (add-to-list 'default-frame-alist '(left . -1))
@@ -34,6 +36,7 @@
 ;; key binding
 (setq mac-option-key-is-meta nil)
 (setq mac-command-key-is-meta t)
+(define-key global-map [?¥] [?\\])
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
 (global-set-key "\C-h" 'delete-backward-char)
