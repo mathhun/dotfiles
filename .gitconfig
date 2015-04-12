@@ -51,3 +51,6 @@ last = log -1 HEAD
 
 [push]
 default = matching
+
+[ghq]
+root = ~/dev/src
