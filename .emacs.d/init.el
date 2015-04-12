@@ -236,6 +236,13 @@
             (flymake-mode t)))
 
 ;;
+;; Go
+;;
+
+(require 'go-mode-autoloads)
+
+
+;;
 ;; Lisp
 ;;
 

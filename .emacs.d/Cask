@@ -50,3 +50,4 @@
 (depends-on "flymake-python-pyflakes")
 (depends-on "php-mode")
 (depends-on "markdown-mode")
+(depends-on "go-mode")
