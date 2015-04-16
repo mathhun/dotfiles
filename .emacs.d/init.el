@@ -239,6 +239,7 @@
 ;; Go
 ;;
 
+(setenv "GOPATH" (concat (getenv "HOME") "/dev"))
 (require 'go-mode-autoloads)
 
 
