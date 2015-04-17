@@ -90,6 +90,11 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
+;; PATH
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-env "GOPATH"))
+
 ;;
 ;; helm
 ;;
@@ -194,9 +199,12 @@
 ;; programming
 ;;
 
-(yas-global-mode t)
-(require 'auto-complete-config)
-(ac-config-default)
+;;(yas-global-mode t)
+;;(require 'auto-complete)
+;;(require 'auto-complete-config)
+;;(ac-config-default)
+;;(global-auto-complete-mode t)
+;;(global-set-key (kbd "C-c TAB") 'auto-complete)
 
 ;; flymake
 ;;(setq flymake-gui-warnings-enabled nil)
@@ -240,16 +248,22 @@
 ;; Golang
 ;;
 
-(setenv "GOPATH" (concat (getenv "HOME") "/dev"))
 (require 'go-mode-autoloads)
 (require 'go-autocomplete)
-(add-hook 'before-save-hook 'gofmt-before-save)
+
+(require 'auto-complete-config)
+(global-auto-complete-mode t)
+(ac-config-default)
+
 (add-hook 'go-mode-hook
           (lambda ()
-            (local-set-key (kbd "C-c TAB") 'auto-complete)
-            (local-set-key (kbd "C-c C-j") 'godef-jump)
-            (local-set-key (kbd "C-c C-k") 'pop-tag-mark)))
-
+	    ;;(setq gofmt-command "goimports")
+	    (add-hook 'before-save-hook 'gofmt-before-save)
+            (local-set-key (kbd "M-.") 'godef-jump)
+            (local-set-key (kbd "M-,") 'pop-tag-mark)
+	    (local-set-key (kbd "C-c i") 'go-goto-imports)
+            (define-key ac-mode-map (kbd "C-c TAB") 'auto-complete)
+            ))
 
 ;;
 ;; Lisp
