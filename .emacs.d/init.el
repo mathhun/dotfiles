@@ -23,7 +23,8 @@
 (setq split-width-threshold 0)
 
 ;; path
-(let ((lis (list (concat (getenv "HOME") "/.pyenv/shims")
+(let ((lis (list (expand-file-name "~/.pyenv/shims")
+                 (expand-file-name "~/dev/bin")
                  "/usr/local/bin")))
   (setq exec-path (append lis exec-path)))
 
@@ -241,6 +242,7 @@
 
 (setenv "GOPATH" (concat (getenv "HOME") "/dev"))
 (require 'go-mode-autoloads)
+(add-hook 'before-save-hook 'gofmt-before-save)
 
 
 ;;
