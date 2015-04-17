@@ -237,12 +237,14 @@
             (flymake-mode t)))
 
 ;;
-;; Go
+;; Golang
 ;;
 
 (setenv "GOPATH" (concat (getenv "HOME") "/dev"))
 (require 'go-mode-autoloads)
+(require 'go-autocomplete)
 (add-hook 'before-save-hook 'gofmt-before-save)
+;;(add-hook 'go-mode-hook (lambda () (local-set-key (kbd "M-.") 'godef-jump)))
 
 
 ;;
