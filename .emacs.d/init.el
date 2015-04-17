@@ -22,12 +22,6 @@
 (setq split-height-threshold 0)
 (setq split-width-threshold 0)
 
-;; path
-(let ((lis (list (expand-file-name "~/.pyenv/shims")
-                 (expand-file-name "~/dev/bin")
-                 "/usr/local/bin")))
-  (setq exec-path (append lis exec-path)))
-
 ;; frame size
 (add-to-list 'default-frame-alist '(left . -1))
 (add-to-list 'default-frame-alist '(top . 0))
@@ -199,12 +193,12 @@
 ;; programming
 ;;
 
-;;(yas-global-mode t)
-;;(require 'auto-complete)
-;;(require 'auto-complete-config)
-;;(ac-config-default)
-;;(global-auto-complete-mode t)
-;;(global-set-key (kbd "C-c TAB") 'auto-complete)
+(yas-global-mode t)
+(require 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
+(global-auto-complete-mode t)
+(global-set-key (kbd "C-c TAB") 'auto-complete)
 
 ;; flymake
 ;;(setq flymake-gui-warnings-enabled nil)
@@ -251,19 +245,13 @@
 (require 'go-mode-autoloads)
 (require 'go-autocomplete)
 
-(require 'auto-complete-config)
-(global-auto-complete-mode t)
-(ac-config-default)
-
 (add-hook 'go-mode-hook
           (lambda ()
-	    ;;(setq gofmt-command "goimports")
-	    (add-hook 'before-save-hook 'gofmt-before-save)
+            (add-hook 'before-save-hook 'gofmt-before-save)
             (local-set-key (kbd "M-.") 'godef-jump)
             (local-set-key (kbd "M-,") 'pop-tag-mark)
-	    (local-set-key (kbd "C-c i") 'go-goto-imports)
-            (define-key ac-mode-map (kbd "C-c TAB") 'auto-complete)
-            ))
+            (local-set-key (kbd "C-c i") 'go-goto-imports)
+            (setq ac-use-menu-map t)))
 
 ;;
 ;; Lisp
