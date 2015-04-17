@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: i
+# key: i
+# binding: direct-keybinding
+# --
+import (
+	"$0"
+)

@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: gh
+# key: gh
+# binding: direct-keybinding
+# --
+"github.com/$0"
