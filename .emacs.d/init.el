@@ -92,6 +92,7 @@
 ;;
 ;; helm
 ;;
+
 (when (require 'helm-config nil t)
   (helm-mode 1)
 
@@ -141,6 +142,7 @@
 ;;
 ;; elscreen
 ;;
+
 (setq elscreen-prefix-key (kbd "C-z"))
 (elscreen-start)
 (setq elscreen-tab-display-kill-screen nil)
@@ -166,10 +168,10 @@
         ("dict" . "OnlineDict")
         ("*WL:Message*" . "Wanderlust")))
 
-
 ;;
 ;; pbcopy
 ;;
+
 (when nil (eq system-type 'darwin)
   (defun copy-from-osx ()
     (shell-command-to-string "pbpaste"))
@@ -188,7 +190,6 @@
 (global-undo-tree-mode t)
 (global-set-key (kbd "M-/") 'undo-tree-redo)
 
-
 ;;
 ;; programming
 ;;
@@ -199,6 +200,7 @@
 (ac-config-default)
 (global-auto-complete-mode t)
 (global-set-key (kbd "C-c TAB") 'auto-complete)
+(setq ac-use-menu-map t)
 
 ;; flymake
 ;;(setq flymake-gui-warnings-enabled nil)
@@ -251,7 +253,8 @@
             (local-set-key (kbd "M-.") 'godef-jump)
             (local-set-key (kbd "M-,") 'pop-tag-mark)
             (local-set-key (kbd "C-c i") 'go-goto-imports)
-            (setq ac-use-menu-map t)))
+            (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
+            ))
 
 ;;
 ;; Lisp
