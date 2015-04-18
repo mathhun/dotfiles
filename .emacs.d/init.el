@@ -250,6 +250,7 @@
 (add-hook 'go-mode-hook
           (lambda ()
             (add-hook 'before-save-hook 'gofmt-before-save)
+            (setq gofmt-command "goimports")
             (local-set-key (kbd "M-.") 'godef-jump)
             (local-set-key (kbd "M-,") 'pop-tag-mark)
             (local-set-key (kbd "C-c i") 'go-goto-imports)
