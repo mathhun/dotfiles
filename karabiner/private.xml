@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- copy to ~/Library/Application\ Support/Karabiner/private.xml -->
+<root>
+    <item>
+        <name>C-x to C-x EISUU in Emacs</name>
+        <identifier>private.ctrlx_to_ctrlx2_and_eisuu_emacs</identifier>
+        <only>EMACS</only>
+        <autogen>
+          __KeyToKey__
+          KeyCode::X, ModifierFlag::CONTROL_L,
+          KeyCode::X, ModifierFlag::CONTROL_L, KeyCode::JIS_EISUU
+        </autogen>
+    </item>
+</root>
