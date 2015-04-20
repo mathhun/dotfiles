@@ -3,4 +3,4 @@
 # key: pf
 # binding: direct-keybinding
 # --
-fmt.Printf($0)
+fmt.Printf("$0\n")
