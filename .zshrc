@@ -11,7 +11,7 @@ export PAGER=less
 export LESS='-R'
 export MANPATH=/usr/local/share/man:/opt/local/share/man:/usr/share/man:$HOME/local/man
 export INFOPATH=/usr/info:/usr/local/info
-#export WORDCHARS='*?_.[]~=&;!#$%^(){}<>' # ^W: backward-kill-word
+export WORDCHARS='*?_.[]~=&;!#$%^(){}<>' # ^W: backward-kill-word
 
 ### History ###
 HISTFILE=~/.zhistory
@@ -58,10 +58,10 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 fignore=(\~)
 
 # ^W
-autoload -Uz select-word-style
-select-word-style default
-zstyle ':zle:*' word-chars word-chars " /=;@:{},|"
-zstyle ':zle:*' word-style unspecified
+#autoload -Uz select-word-style
+#select-word-style default
+#zstyle ':zle:*' word-chars word-chars " /=;@:{},|"
+#zstyle ':zle:*' word-style unspecified
 
 # emacs-like keybind
 bindkey -e
@@ -116,23 +116,6 @@ function zman() {
 PROMPT="%B%{[36m%}%n%{[37m%} @ %{[35m%}%M%b%{[0m%} %{[33m%}%B%C %#%b %{[0m%}"
 RPROMPT="%{[35m%}%B[%/]%{[0m%}%b"
 
-#precmd() {
-#  _update_rprompt;
-#}
-#chpwd() {
-#  _update_rprompt;
-#}
-#_update_rprompt () {
-#  GIT_CURRENT_BRANCH=$( git branch 2> /dev/null | grep '^\*' | cut -b 3- )
-#
-#  if [ "`git ls-files 2>/dev/null`" ]; then
-#    RPROMPT="%B%{[35m%}[%{[33m%}$GIT_CURRENT_BRANCH%{[37m%}:%{[35m%}%/]%{[0m%}%b"
-#  else
-#    RPROMPT="%B %{[35m%} [%/] %{[0m%} %b"
-#  fi
-#}
-
-
 #----------------------------------------------------------------------
 # utility
 #
@@ -140,7 +123,6 @@ RPROMPT="%{[35m%}%B[%/]%{[0m%}%b"
 function path() {
     echo $PATH | perl -nle 'print for split ":"'
 }
-
 
 #----------------------------------------------------------------------
 # Aliases
@@ -191,7 +173,6 @@ compctl -g '*.hs' runghc
 if [ -e ~/.aliases ];then
   source ~/.aliases
 fi
-
 
 #----------------------------------------------------------------------
 # programming
@@ -331,6 +312,7 @@ bindkey '^xw' peco-tmux
 #
 # other anyframework bindings
 #
+
 bindkey '^xb' anyframe-widget-cdr
 bindkey '^x^b' anyframe-widget-checkout-git-branch
 
