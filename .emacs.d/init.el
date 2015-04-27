@@ -282,6 +282,7 @@
     ad-do-it))
 
 ;; npm install -g jsxhint
+(require 'flycheck)
 (flycheck-define-checker jsxhint-checker
   "A JSX syntax and style checker based on JSXHint."
 
@@ -298,7 +299,7 @@
               (flycheck-mode))))
 
 (require 'jsx-mode)
-(add-to-list 'aoto-mode-alist '("\\.jsx\\'" . jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
 
 ;;
 ;; Lisp / Scheme / Gauche
@@ -311,6 +312,11 @@
 (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+(add-hook 'inferior-scheme-mode-hook  #'enable-paredit-mode)
+
+(add-hook 'paredit-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-h") 'paredit-backward-delete)))
 
 ;; info
 (global-set-key (kbd "C-c h I") 'gauche-info)
