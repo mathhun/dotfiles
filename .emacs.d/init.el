@@ -212,6 +212,8 @@
 (setq ac-use-menu-map t)
 
 ;; flymake
+(require 'flymake)
+(require 'flycheck)
 ;;(setq flymake-gui-warnings-enabled nil)
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -282,7 +284,6 @@
     ad-do-it))
 
 ;; npm install -g jsxhint
-(require 'flycheck)
 (flycheck-define-checker jsxhint-checker
   "A JSX syntax and style checker based on JSXHint."
 
