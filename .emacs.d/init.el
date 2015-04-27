@@ -92,6 +92,13 @@
   (exec-path-from-shell-copy-env "GOPATH"))
 
 ;;
+;; recentf
+;;
+
+(require 'recentf)
+(setq recentf-max-saved-items 1000)
+
+;;
 ;; helm
 ;;
 
