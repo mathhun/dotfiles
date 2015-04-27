@@ -313,6 +313,7 @@
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 
 ;; info
+(global-set-key (kbd "C-c h I") 'gauche-info)
 (defun gauche-info ()
   (interactive)
   (info "/usr/local/share/info/gauche-refe.info-1.gz"))
