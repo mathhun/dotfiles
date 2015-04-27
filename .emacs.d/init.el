@@ -318,6 +318,9 @@
   (interactive)
   (info "/usr/local/share/info/gauche-refe.info-1.gz"))
 
+;; run gosh
+(global-set-key (kbd "C-x S") (lambda () (interactive) (run-scheme "gosh")))
+
 ;; scheme indent
 (setq scheme-program-name "gosh")
 
