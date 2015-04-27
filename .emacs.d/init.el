@@ -261,7 +261,7 @@
             ))
 
 ;;
-;; JavaScript / React
+;; JavaScript / React / JSX
 ;;
 
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
@@ -287,6 +287,9 @@
               ;; enable flycheck
               (flycheck-select-checker 'jsxhint-checker)
               (flycheck-mode))))
+
+(require 'jsx-mode)
+(add-to-list 'aoto-mode-alist '("\\.jsx\\'" . jsx-mode))
 
 ;;
 ;; Lisp

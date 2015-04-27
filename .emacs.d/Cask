@@ -54,3 +54,4 @@
 (depends-on "markdown-mode")
 (depends-on "go-mode")
 (depends-on "go-autocomplete")
+(depends-on "jsx-mode")
