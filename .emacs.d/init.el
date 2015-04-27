@@ -213,9 +213,10 @@
 
 ;; flymake
 (require 'flymake)
-(require 'flycheck)
 ;;(setq flymake-gui-warnings-enabled nil)
+
 ;; flycheck
+(require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;;
@@ -272,10 +273,27 @@
             ))
 
 ;;
-;; JavaScript / React / JSX
+;; JavaScript
 ;;
 
+;; npm install -g jshint
+
+(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+
+(add-hook 'js-mode-hook 'js2-minor-mode)
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+
+(require 'js)
+(require 'js2-mode)
+(define-key js-mode-map "{" 'paredit-open-curly)
+(define-key js-mode-map "}" 'paredit-close-curly-and-newline)
+
+(flycheck-add-next-checker 'javascript-jshint 'javascript-gjslint)
+
+;;
+;; React / JSX
+;;
 
 (defadvice web-mode-highlight-part (around tweak-jsx activate)
   (if (equal web-mode-content-type "jsx")
