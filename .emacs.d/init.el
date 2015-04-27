@@ -52,6 +52,8 @@
 (global-set-key (kbd "C-c l") (ignore-error-wrapper 'windmove-right))
 (global-set-key (kbd "C-c k") (ignore-error-wrapper 'windmove-up))
 (global-set-key (kbd "C-c j") (ignore-error-wrapper 'windmove-down))
+;; help command
+(global-set-key (kbd "C-c h") 'help-command)
 
 ;; font
 (when (eq window-system 'ns)
@@ -292,7 +294,7 @@
 (add-to-list 'aoto-mode-alist '("\\.jsx\\'" . jsx-mode))
 
 ;;
-;; Lisp
+;; Lisp / Scheme / Gauche
 ;;
 
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
@@ -302,6 +304,11 @@
 (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+
+;; info
+(defun gauche-info ()
+  (interactive)
+  (info "/usr/local/share/info/gauche-refe.info-1.gz"))
 
 ;; scheme indent
 (setq scheme-program-name "gosh")
