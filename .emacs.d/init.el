@@ -68,6 +68,11 @@
       scroll-margin 0
       scroll-step 1)
 
+;; emacsclient
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
 ;; dialog
 (defadvice yes-or-no-p (around prevent-dialog activate)
   "Prevent yes-or-no-p from activating a dialog"
