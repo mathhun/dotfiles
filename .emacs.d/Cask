@@ -56,3 +56,5 @@
 (depends-on "go-autocomplete")
 (depends-on "jsx-mode")
 (depends-on "js2-mode")
+(depends-on "unityjs-mode" :git "git@github.com:mathhun/unityjs-mode.git")
+

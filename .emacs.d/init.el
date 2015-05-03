@@ -297,6 +297,14 @@
 (flycheck-add-next-checker 'javascript-jshint 'javascript-gjslint)
 
 ;;
+;; UnityJS
+;;
+
+;; UnityJS mode for emacs
+(autoload 'unityjs-mode "unityjs-mode" "Major mode for editing Unity Javascript code." t)
+(require 'unityjs-mode)
+
+;;
 ;; web-mode
 ;;
 
