@@ -57,4 +57,4 @@
 (depends-on "jsx-mode")
 (depends-on "js2-mode")
 (depends-on "unityjs-mode" :git "git@github.com:mathhun/unityjs-mode.git")
-
+(depends-on "csharp-mode" :git "git@github.com:josteink/csharp-mode.git")
