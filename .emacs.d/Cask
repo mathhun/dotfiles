@@ -50,6 +50,9 @@
 ;; programming
 (depends-on "python-mode")
 (depends-on "flymake-python-pyflakes")
+(depends-on "helm-etags+" :git "git@github.com:jixiuf/helm-etags-plus.git")
+(depends-on "swoop")
+(depends-on "quickrun" :git "git@github.com:syohex/emacs-quickrun.git")
 (depends-on "php-mode")
 (depends-on "markdown-mode")
 (depends-on "go-mode")

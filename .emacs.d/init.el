@@ -257,6 +257,29 @@
           (lambda ()
             (flymake-mode t)))
 
+;; etags
+(require 'helm-etags+)
+
+(when (require 'swoop)
+  (global-set-key (kbd "M-o")   'swoop)
+  (global-set-key (kbd "C-M-o") 'swoop-multi)
+  ;; (global-set-key (kbd "M-o")   'swoop-pcre-regexp)
+  (global-set-key (kbd "C-S-o") 'swoop-back-to-last-position)
+
+  (define-key isearch-mode-map (kbd "M-o") 'swoop-from-isearch)
+  (define-key swoop-map (kbd "M-o") 'swoop-multi-from-swoop)
+
+  (setq swoop-font-size-change: nil))
+
+;; imenu
+(semantic-mode 1)
+(add-hook 'python-mode-hook
+          (lambda ()
+            (setq imenu-create-index-function 'python-imenu-create-index)))
+
+;; quickrun
+(quickrun-add-command "python" '((:command . "python")) :override t)
+
 ;;
 ;; Golang
 ;;
