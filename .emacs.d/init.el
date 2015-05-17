@@ -223,6 +223,8 @@
 ;; flycheck
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(setq flycheck-check-syntax-automatically '(mode-enabled save idle-change))
+(setq flycheck-idle-change-delay 2)
 
 ;;
 ;; python
@@ -326,6 +328,32 @@
 ;; UnityJS mode for emacs
 (autoload 'unityjs-mode "unityjs-mode" "Major mode for editing Unity Javascript code." t)
 (require 'unityjs-mode)
+
+;;
+;; C# / Unity
+;;
+
+(require 'csharp-mode)
+(add-hook 'csharp-mode-hook
+          '(lambda ()
+             (setq indent-tabs-mode nil)
+             (setq c-basic-offset 4)
+             (c-set-offset 'substatement-open 0)
+             (flycheck-mode 1)
+             (omnisharp-mode)
+             (auto-complete-mode)
+             (local-set-key (kbd "C-c i") 'omnisharp-auto-complete)
+             (local-set-key (kbd "M-.") 'omnisharp-go-to-definition)
+             ))
+
+;; brew install mono
+;; git clone https://github.com/nosami/OmniSharpServer.git
+;; cd OmniSharpServer
+;; git submodule update --init --recursive
+;; xbuild
+(require 'omnisharp)
+(setq omnisharp-server-executable-path
+      (expand-file-name "~/dev/src/github.com/nosami/OmniSharpServer/OmniSharp/bin/Debug/OmniSharp.exe"))
 
 ;;
 ;; web-mode
