@@ -418,6 +418,19 @@
 (add-to-list 'interpreter-mode-alist '("runghc" . haskell-mode))
 (add-to-list 'interpreter-mode-alist '("runhaskell" . haskell-mode))
 
+;;
+;; Scala
+;;
+
+(require 'scala-mode2)
+(add-to-list 'auto-mode-alist '("\.sbt$" . scala-mode))
+
+(require 'ensime)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+(add-hook 'scala-mode-hook
+          (lambda ()
+            (electric-pair-mode t)))
 
 ;;
 ;; Lisp / Scheme / Gauche

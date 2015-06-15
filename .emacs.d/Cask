@@ -63,3 +63,5 @@
 (depends-on "csharp-mode" :git "git@github.com:josteink/csharp-mode.git")
 (depends-on "omnisharp")
 (depends-on "haskell-mode")
+(depends-on "scala-mode2")
+(depends-on "ensime")
