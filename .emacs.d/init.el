@@ -57,8 +57,11 @@
 
 ;; font
 (when (eq window-system 'ns)
-  (set-face-attribute 'default nil :family "Migu 1M" :height 120)
-  (setq line-spacing 0))
+  ;;(set-face-attribute 'default nil :family "Migu 1M" :height 120)
+  ;;(setq line-spacing 0)
+
+  (set-face-attribute 'default nil :family "Source Han Code JP" :height 100)
+  )
 
 ;; color
 (load-theme 'deeper-blue t)
