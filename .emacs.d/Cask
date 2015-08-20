@@ -65,3 +65,6 @@
 (depends-on "haskell-mode")
 (depends-on "scala-mode2")
 (depends-on "ensime")
+(depends-on "elixir-mode")
+(depends-on "alchemist")
+(depends-on "ac-alchemist" :git "git@github.com:syohex/emacs-ac-alchemist.git")
