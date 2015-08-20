@@ -435,6 +435,10 @@
           (lambda ()
             (electric-pair-mode t)))
 
+(custom-set-variables
+ '(ensime-sem-high-faces
+   '((var . scala-font-lock:var-face))))
+
 ;;
 ;; Elixir
 ;;
