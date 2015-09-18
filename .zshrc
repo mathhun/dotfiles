@@ -31,6 +31,34 @@ MAILPATH="/var/mail/$USER?${fg[green]}New mail arrived in \$_."
 MAILCHECK=10
 
 #----------------------------------------------------------------------
+# PATH
+#
+
+# perl
+export PATH=$HOME/.plenv/bin:$PATH
+if type plenv >/dev/null 2>&1; then
+    eval "$(plenv init -)"
+fi
+
+# python
+export PYENV_ROOT=$HOME/.pyenv
+export PATH=$PYENV_ROOT/bin:$PATH
+if type pyenv >/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
+
+# ruby
+export PATH=$HOME/.rbenv/bin:$PATH
+if type rbenv > /dev/null 2>&1; then
+    eval "$(rbenv init -)"
+fi
+
+# go
+export GOPATH=$HOME/dev
+export PATH=$GOPATH/bin:$PATH
+export PATH=$HOME/opt/go/bin:$PATH
+
+#----------------------------------------------------------------------
 # Zsh options
 #
 
@@ -141,9 +169,6 @@ alias realias='$EDITOR ~/.aliases; source ~/.aliases'
 alias so='source ~/.zshrc'
 alias dot='cd ~/dotfiles'
 alias ag='ag --pager=less'
-if type hub >/dev/null 2>&1; then
-    eval "$(hub alias -s)"
-fi
 
 alias -g L='| TERM=vt100 less'
 alias -g LL='2>&1 | TERM=vt100 less'
@@ -174,33 +199,10 @@ if [ -e ~/.aliases ];then
   source ~/.aliases
 fi
 
-#----------------------------------------------------------------------
-# programming
-#
-
-# perl
-export PATH=$HOME/.plenv/bin:$PATH
-if type plenv >/dev/null 2>&1; then
-    eval "$(plenv init -)"
+# git/hub
+if type hub >/dev/null 2>&1; then
+    eval "$(hub alias -s)"
 fi
-
-# python
-export PYENV_ROOT=$HOME/.pyenv
-export PATH=$PYENV_ROOT/bin:$PATH
-if type pyenv >/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
-
-# ruby
-export PATH=$HOME/.rbenv/bin:$PATH
-if type rbenv > /dev/null 2>&1; then
-    eval "$(rbenv init -)"
-fi
-
-# go
-export GOPATH=$HOME/dev
-export PATH=$GOPATH/bin:$PATH
-export PATH=$HOME/opt/go/bin:$PATH
 
 #----------------------------------------------------------------------
 # package
