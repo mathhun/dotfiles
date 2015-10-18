@@ -508,7 +508,7 @@
 (global-set-key (kbd "C-c h I") 'gauche-info)
 (defun gauche-info ()
   (interactive)
-  (info "/usr/local/share/info/gauche-refe.info-1.gz"))
+  (info "/usr/local/share/info/gauche-refe.info"))
 
 ;; run gosh
 (global-set-key (kbd "C-x S") (lambda () (interactive) (run-scheme "gosh")))
