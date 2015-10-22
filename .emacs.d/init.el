@@ -462,6 +462,10 @@
 (add-to-list 'interpreter-mode-alist '("runghc" . haskell-mode))
 (add-to-list 'interpreter-mode-alist '("runhaskell" . haskell-mode))
 
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
 ;;
 ;; Scala
 ;;
