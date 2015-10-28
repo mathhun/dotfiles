@@ -216,7 +216,7 @@
 (require 'midnight)
 
 ;; kill buffers if they were last disabled more than this seconds ago
-(setq clean-buffer-list-delay-special 900)
+(setq clean-buffer-list-delay-special 7200)
 
 (defvar clean-buffer-list-timer nil
   "Stores clean-buffer-list timer if there is one. You can disable clean-buffer-list by (cancel-timer clean-buffer-list-timer).")
@@ -458,6 +458,8 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'font-lock-mode)
 (add-hook 'haskell-mode-hook 'imenu-add-menubar-index)
+(add-hook 'haskell-mode-hook 'haskell-indentation-mode)
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
 (add-to-list 'interpreter-mode-alist '("runghc" . haskell-mode))
 (add-to-list 'interpreter-mode-alist '("runhaskell" . haskell-mode))
