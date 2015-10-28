@@ -466,6 +466,20 @@
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
+;; ghc
+(add-to-list 'exec-path "~/.local/bin")
+
+(autoload 'ghc-init "ghc" nil t)
+(add-hook 'haskell-mode-hook
+          (lambda ()
+            (ghc-init)
+            (flymake-mode)))
+
+(defadvice inferior-haskell-load-file (after change-focus-after-load)
+  "Change focus to GHCi window after C-c C-l command"
+  (other-window 1))
+(ad-activate 'inferior-haskell-load-file)
+
 ;;
 ;; Scala
 ;;
