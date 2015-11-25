@@ -447,6 +447,7 @@
 ;;
 
 (require 'haskell-mode)
+(setq haskell-program-name "stack ghci")
 (autoload 'haskell-mode "haskell-mode" nil t)
 (autoload 'haskell-cabal "haskell-cabal" nil t)
 
