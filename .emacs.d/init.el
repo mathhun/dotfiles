@@ -93,6 +93,13 @@
 ;; color
 (load-theme 'deeper-blue t)
 
+;; highight whitespace
+(require 'whitespace)
+(setq whitespace-style '(face trailing tabs empty space-mark tab-mark))
+(setq whitespace-display-mappings
+      '((tab-mark ?\t [?\u00BB ?\t] [?\\ ?\t])))
+(global-whitespace-mode 1)
+
 ;; cursor
 (setq scroll-conservatively 35
       scroll-margin 0
