@@ -96,8 +96,7 @@
 ;; highight whitespace
 (require 'whitespace)
 (setq whitespace-style '(face trailing tabs empty space-mark tab-mark))
-(setq whitespace-display-mappings
-      '((tab-mark ?\t [?\u00BB ?\t] [?\\ ?\t])))
+(setq whitespace-display-mappings '((tab-mark ?\t [?\u00BB ?\t] [?\\ ?\t])))
 (global-whitespace-mode 1)
 
 ;; cursor
@@ -385,14 +384,16 @@
 
 ;; npm install -g jshint
 
-(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 
-(add-hook 'js-mode-hook 'js2-minor-mode)
-(add-hook 'js2-mode-hook 'ac-js2-mode)
+;;(add-hook 'js-mode-hook 'js2-minor-mode)
+;;(add-hook 'js2-mode-hook 'ac-js2-mode)
 
 (require 'js)
 (require 'js2-mode)
+(require 'paredit)
 (define-key js-mode-map "{" 'paredit-open-curly)
 (define-key js-mode-map "}" 'paredit-close-curly-and-newline)
 
@@ -403,8 +404,8 @@
 ;;
 
 ;; UnityJS mode for emacs
-(autoload 'unityjs-mode "unityjs-mode" "Major mode for editing Unity Javascript code." t)
-(require 'unityjs-mode)
+;;(autoload 'unityjs-mode "unityjs-mode" "Major mode for editing Unity Javascript code." t)
+;;(require 'unityjs-mode)
 
 ;;
 ;; C# / Unity
