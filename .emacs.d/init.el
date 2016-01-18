@@ -95,7 +95,8 @@
 
 ;; highight whitespace
 (require 'whitespace)
-(setq whitespace-style '(face trailing tabs empty space-mark tab-mark))
+;;(setq whitespace-style '(face trailing tabs empty space-mark tab-mark))
+(setq whitespace-style '(face trailing tabs space-mark tab-mark))
 (setq whitespace-display-mappings '((tab-mark ?\t [?\u00BB ?\t] [?\\ ?\t])))
 (global-whitespace-mode 1)
 
@@ -525,16 +526,16 @@
 (require 'scala-mode2)
 (add-to-list 'auto-mode-alist '("\.sbt$" . scala-mode))
 
-(require 'ensime)
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+;;(require 'ensime)
+;;(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 (add-hook 'scala-mode-hook
           (lambda ()
             (electric-pair-mode t)))
 
-(custom-set-variables
- '(ensime-sem-high-faces
-   '((var . scala-font-lock:var-face))))
+;;(custom-set-variables
+;; '(ensime-sem-high-faces
+;;   '((var . scala-font-lock:var-face))))
 
 ;;
 ;; Elixir
@@ -633,3 +634,20 @@
 
 ;; dired
 (put 'dired-find-alternate-file 'disabled nil)
+
+;;
+;; writen by emacs
+;;
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(helm-etags-file ((t (:foreground "Orange" :underline t)))))
