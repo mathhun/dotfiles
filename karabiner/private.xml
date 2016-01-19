@@ -3,12 +3,22 @@
 <root>
     <item>
         <name>C-x to C-x EISUU in Emacs</name>
-        <identifier>private.ctrlx_to_ctrlx2_and_eisuu_emacs</identifier>
+        <identifier>private.ctrlx_to_ctrlx_and_eisuu_emacs</identifier>
         <only>EMACS</only>
         <autogen>
           __KeyToKey__
           KeyCode::X, ModifierFlag::CONTROL_L,
           KeyCode::X, ModifierFlag::CONTROL_L, KeyCode::JIS_EISUU
+        </autogen>
+    </item>
+    <item>
+        <name>C-c to C-c EISUU in Emacs</name>
+        <identifier>private.ctrlc_to_ctrlc_and_eisuu_emacs</identifier>
+        <only>EMACS</only>
+        <autogen>
+          __KeyToKey__
+          KeyCode::C, ModifierFlag::CONTROL_L,
+          KeyCode::C, ModifierFlag::CONTROL_L, KeyCode::JIS_EISUU
         </autogen>
     </item>
 </root>
