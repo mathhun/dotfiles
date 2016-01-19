@@ -70,3 +70,4 @@
 (depends-on "alchemist")
 (depends-on "ac-alchemist" :git "git@github.com:syohex/emacs-ac-alchemist.git")
 (depends-on "stan-mode")
+(depends-on "ace-jump-mode")
