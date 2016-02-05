@@ -663,6 +663,9 @@
 ;; dired
 (put 'dired-find-alternate-file 'disabled nil)
 
+(let ((path (expand-file-name "~/.emacs.d/local.el")))
+  (when (file-exists-p path) (load-file path)))
+
 ;;
 ;; writen by emacs
 ;;
