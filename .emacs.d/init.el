@@ -6,6 +6,7 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (set-scroll-bar-mode nil)
+(set-default 'truncate-lines t)
 ;; no beep
 (setq visible-bell t)
 (setq ring-bell-function 'ignore)
