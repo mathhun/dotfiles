@@ -559,7 +559,8 @@
 
 (add-hook 'scala-mode-hook
           (lambda ()
-            (electric-pair-mode t)))
+            (electric-pair-mode t)
+            (setq scala-indent:use-javadoc-style t)))
 
 ;;(custom-set-variables
 ;; '(ensime-sem-high-faces
@@ -571,6 +572,14 @@
 
 (require 'elixir-mode)
 (add-hook 'elixir-mode-hook 'ac-alchemist-setup)
+
+;;
+;; Erlang
+;;
+
+(add-to-list 'load-path "/usr/local/Cellar/erlang/18.1/lib/erlang/lib/tools-2.8.1/emacs/")
+(setq erlang-root-dir "/usr/local/Cellar/erlang/18.1/lib/erlang/")
+(require 'erlang-start)
 
 ;;
 ;; Lisp / Scheme / Gauche
