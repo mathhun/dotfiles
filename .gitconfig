@@ -54,3 +54,6 @@ default = matching
 
 [ghq]
 root = ~/dev/src
+
+[merge]
+	ff = false
