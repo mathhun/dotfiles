@@ -578,12 +578,23 @@
 ;;
 
 (add-to-list 'load-path "/usr/local/Cellar/erlang/18.1/lib/erlang/lib/tools-2.8.1/emacs/")
-(setq erlang-root-dir "/usr/local/Cellar/erlang/18.1/lib/erlang/")
+(add-to-list 'load-path "/usr/local/Cellar/erlang/18.2.1/lib/erlang/lib/tools-2.8.2/emacs/")
+(setq erlang-root-dir "/usr/local/Cellar/erlang/18.2.1/lib/erlang/")
 (require 'erlang-start)
 
 ;;
 ;; Lisp / Scheme / Gauche
 ;;
+
+;; cl
+
+;; Set your lisp system and, optionally, some contribs
+(require 'slime)
+(setq inferior-lisp-program "sbcl")
+(setq slime-contribs '(slime-fancy))
+(slime-setup '(slime-repl slime-fancy slime-banner))
+
+;;; scheme
 
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
@@ -593,6 +604,7 @@
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 (add-hook 'inferior-scheme-mode-hook  #'enable-paredit-mode)
+(add-hook 'slime-repl-mode-hook       #'enable-paredit-mode)
 
 (add-hook 'paredit-mode-hook
           (lambda ()
