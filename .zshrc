@@ -1,5 +1,7 @@
 # .zshrc
 
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
 #----------------------------------------------------------------------
 #  Environment variables
 #
