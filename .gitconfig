@@ -2,10 +2,16 @@
 name = mathhun
 email = achemer@gmail.com
 
+[core]
+whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+editor = /usr/bin/vim
+excludesfile = /Users/naoto/.gitignore
+
 [color]
 branch = auto
 diff = auto
 status = auto
+ui = auto
 
 [color "branch"]
 current = yellow reverse
@@ -22,14 +28,6 @@ new = green bold
 added = yellow
 changed = green bold
 untracked = cyan bold
-
-[color]
-ui = auto
-
-[core]
-whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-editor = /usr/bin/vim
-	excludesfile = /Users/naoto/.gitignore
 
 [branch]
 autosetupmerge = true
@@ -48,9 +46,58 @@ sta = stash
 stp = stash pop
 unstage = reset HEAD --
 last = log -1 HEAD
+alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
+ta = log --graph --branches --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
+ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+refresh= !git fetch origin && git remote prune origin
 
 [push]
 default = matching
 
 [ghq]
 root = ~/dev/src
+
+[url "git://github.com/ghc/packages-"]
+insteadOf = git://github.com/ghc/packages/
+[url "http://github.com/ghc/packages-"]
+insteadOf = http://github.com/ghc/packages/
+[url "https://github.com/ghc/packages-"]
+insteadOf = https://github.com/ghc/packages/
+[url "ssh://git@github.com/ghc/packages-"]
+insteadOf = ssh://git@github.com/ghc/packages/
+[url "git@github.com:/ghc/packages-"]
+insteadOf = git@github.com:/ghc/packages/
+
+[diff]
+
+[difftool]
+
+[merge]
+ff = false
+conflictstyle = diff3
+
+[pager]
+log = diff-highlight | less
+show = diff-highlight | less
+diff = diff-highlight | less
+
+# Merge:
+#
+# どちらの変更点が少ないか
+# git diff HEAD...the/other/branch -- path/to/conflicting/file
+# git diff the/other/branch...HEAD -- path/to/conflicting/file
+#
+# それぞれの変更点が明らかになる
+# git log -p HEAD..the/other/branch -- path/to/conflicting/file
+# git log -p the/other/branch..HEAD -- path/to/conflicting/file
+#
+# 変更点の一番多いファイルに戻す
+# git checkout the/other/branch -- path/to/conflicting/file
+# (あるいは、git checkout --theirs または --ours を使っても良い)
+#
+# 手動で確認して、変更をもう一方のファイルに反映する。
+#
+# すべての変更を修正・プロジェクトをビルド・コンパイル・簡単にテスト
+# git add path/to/conflicting/file
+#
+# git commit

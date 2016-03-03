@@ -6,6 +6,7 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (set-scroll-bar-mode nil)
+(set-default 'truncate-lines t)
 ;; no beep
 (setq visible-bell t)
 (setq ring-bell-function 'ignore)
@@ -37,6 +38,33 @@
 (global-set-key "\C-h" 'delete-backward-char)
 (global-set-key "\C-m" 'newline-and-indent)
 
+;; If the *scratch* buffer is killed, recreate it automatically
+;; FROM: Morten Welind
+;;http://www.geocrawler.com/archives/3/338/1994/6/0/1877802/
+(save-excursion
+  (set-buffer (get-buffer-create "*scratch*"))
+  (lisp-interaction-mode)
+  (make-local-variable 'kill-buffer-query-functions)
+  (add-hook 'kill-buffer-query-functions 'kill-scratch-buffer))
+
+(defun kill-scratch-buffer ()
+  ;; The next line is just in case someone calls this manually
+  (set-buffer (get-buffer-create "*scratch*"))
+  ;; Kill the current (*scratch*) buffer
+  (remove-hook 'kill-buffer-query-functions 'kill-scratch-buffer)
+  (kill-buffer (current-buffer))
+  ;; Make a brand new *scratch* buffer
+  (let ((scratch (get-buffer-create "*scratch*")))
+    (set-buffer scratch)
+    (lisp-interaction-mode)
+    (make-local-variable 'kill-buffer-query-functions)
+    (add-hook 'kill-buffer-query-functions 'kill-scratch-buffer)
+    ;; If you want exactly the same initial scratch buffer you can add
+    (insert initial-scratch-message)
+    (switch-to-buffer scratch)
+    ;; Since we killed it, don't let caller do that.
+    nil))
+
 (require 'cl)
 (defun ignore-error-wrapper (fn)
   "Funtion return new function that ignore errors.
@@ -57,14 +85,21 @@
 
 ;; font
 (when (eq window-system 'ns)
-  ;;(set-face-attribute 'default nil :family "Migu 1M" :height 120)
-  ;;(setq line-spacing 0)
+  (set-face-attribute 'default nil :family "Migu 1M" :height 120)
+  (setq line-spacing 0)
 
-  (set-face-attribute 'default nil :family "Source Han Code JP" :height 100)
+  ;;(set-face-attribute 'default nil :family "Source Han Code JP" :height 100)
   )
 
 ;; color
 (load-theme 'deeper-blue t)
+
+;; highight whitespace
+(require 'whitespace)
+;;(setq whitespace-style '(face trailing tabs empty space-mark tab-mark))
+(setq whitespace-style '(face trailing tabs space-mark tab-mark))
+(setq whitespace-display-mappings '((tab-mark ?\t [?\u00BB ?\t] [?\\ ?\t])))
+(global-whitespace-mode 1)
 
 ;; cursor
 (setq scroll-conservatively 35
@@ -208,6 +243,73 @@
 (global-set-key (kbd "M-/") 'undo-tree-redo)
 
 ;;
+;; Auto clear up your huge buffer list every 2 hours
+;; http://emacswiki.org/emacs/KillingBuffers#toc12
+;;
+
+;; midnight mode
+(require 'midnight)
+
+;; kill buffers if they were last disabled more than this seconds ago
+(setq clean-buffer-list-delay-special 7200)
+
+(defvar clean-buffer-list-timer nil
+  "Stores clean-buffer-list timer if there is one. You can disable clean-buffer-list by (cancel-timer clean-buffer-list-timer).")
+
+;; run clean-buffer-list every 2 hours
+(setq clean-buffer-list-timer (run-at-time t 7200 'clean-buffer-list))
+
+;; kill everything, clean-buffer-list is very intelligent at not killing
+;; unsaved buffer.
+(setq clean-buffer-list-kill-regexps '("^.*$"))
+
+;; keep these buffer untouched
+;; prevent append multiple times
+(defvar clean-buffer-list-kill-never-buffer-names-init
+  clean-buffer-list-kill-never-buffer-names
+  "Init value for clean-buffer-list-kill-never-buffer-names")
+(setq clean-buffer-list-kill-never-buffer-names
+      (append
+       '("*Messages*" "*cmd*" "*scratch*" "*w3m*" "*w3m-cache*" "*Inferior Octave*")
+       clean-buffer-list-kill-never-buffer-names-init))
+
+;; prevent append multiple times
+(defvar clean-buffer-list-kill-never-regexps-init
+  clean-buffer-list-kill-never-regexps
+  "Init value for clean-buffer-list-kill-never-regexps")
+;; append to *-init instead of itself
+(setq clean-buffer-list-kill-never-regexps
+      (append '("^\\*EMMS Playlist\\*.*$")
+              clean-buffer-list-kill-never-regexps-init))
+
+;;
+;; ace jump mode major function
+;;
+(autoload
+  'ace-jump-mode
+  "ace-jump-mode"
+  "Emacs quick move minor mode"
+  t)
+;; you can select the key you prefer to
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+;; enable a more powerful jump back function from ace jump mode
+(autoload
+  'ace-jump-mode-pop-mark
+  "ace-jump-mode"
+  "Ace jump back:-)"
+  t)
+(eval-after-load "ace-jump-mode"
+  '(ace-jump-mode-enable-mark-sync))
+(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+
+;;If you use viper mode :
+;;(define-key viper-vi-global-user-map (kbd "SPC") 'ace-jump-mode)
+;;If you use evil
+;;(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
+
+
+;;
 ;; programming
 ;;
 
@@ -311,14 +413,16 @@
 
 ;; npm install -g jshint
 
-(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 
-(add-hook 'js-mode-hook 'js2-minor-mode)
-(add-hook 'js2-mode-hook 'ac-js2-mode)
+;;(add-hook 'js-mode-hook 'js2-minor-mode)
+;;(add-hook 'js2-mode-hook 'ac-js2-mode)
 
 (require 'js)
 (require 'js2-mode)
+(require 'paredit)
 (define-key js-mode-map "{" 'paredit-open-curly)
 (define-key js-mode-map "}" 'paredit-close-curly-and-newline)
 
@@ -329,8 +433,8 @@
 ;;
 
 ;; UnityJS mode for emacs
-(autoload 'unityjs-mode "unityjs-mode" "Major mode for editing Unity Javascript code." t)
-(require 'unityjs-mode)
+;;(autoload 'unityjs-mode "unityjs-mode" "Major mode for editing Unity Javascript code." t)
+;;(require 'unityjs-mode)
 
 ;;
 ;; C# / Unity
@@ -364,13 +468,14 @@
 
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
+(add-to-list 'auto-mode-alist '("\.ctp$" . web-mode))
 ;; indent
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-css-indent-offset 2)
-(setq web-mode-code-indent-offset 2)
+(setq web-mode-markup-indent-offset 4)
+(setq web-mode-css-indent-offset 4)
+(setq web-mode-code-indent-offset 4)
 ;; padding
-(setq web-mode-style-padding 2)
-(setq web-mode-script-padding 2)
+(setq web-mode-style-padding 4)
+(setq web-mode-script-padding 4)
 
 ;;
 ;; React / JSX
@@ -406,6 +511,7 @@
 ;;
 
 (require 'haskell-mode)
+(setq haskell-program-name "stack ghci")
 (autoload 'haskell-mode "haskell-mode" nil t)
 (autoload 'haskell-cabal "haskell-cabal" nil t)
 
@@ -417,9 +523,29 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'font-lock-mode)
 (add-hook 'haskell-mode-hook 'imenu-add-menubar-index)
+(add-hook 'haskell-mode-hook 'haskell-indentation-mode)
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
 (add-to-list 'interpreter-mode-alist '("runghc" . haskell-mode))
 (add-to-list 'interpreter-mode-alist '("runhaskell" . haskell-mode))
+
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
+;; ghc
+(add-to-list 'exec-path "~/.local/bin")
+
+(autoload 'ghc-init "ghc" nil t)
+(add-hook 'haskell-mode-hook
+          (lambda ()
+            (ghc-init)
+            (flymake-mode)))
+
+(defadvice inferior-haskell-load-file (after change-focus-after-load)
+  "Change focus to GHCi window after C-c C-l command"
+  (other-window 1))
+(ad-activate 'inferior-haskell-load-file)
 
 ;;
 ;; Scala
@@ -428,16 +554,17 @@
 (require 'scala-mode2)
 (add-to-list 'auto-mode-alist '("\.sbt$" . scala-mode))
 
-(require 'ensime)
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+;;(require 'ensime)
+;;(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 (add-hook 'scala-mode-hook
           (lambda ()
-            (electric-pair-mode t)))
+            (electric-pair-mode t)
+            (setq scala-indent:use-javadoc-style t)))
 
-(custom-set-variables
- '(ensime-sem-high-faces
-   '((var . scala-font-lock:var-face))))
+;;(custom-set-variables
+;; '(ensime-sem-high-faces
+;;   '((var . scala-font-lock:var-face))))
 
 ;;
 ;; Elixir
@@ -447,8 +574,27 @@
 (add-hook 'elixir-mode-hook 'ac-alchemist-setup)
 
 ;;
+;; Erlang
+;;
+
+(add-to-list 'load-path "/usr/local/Cellar/erlang/18.1/lib/erlang/lib/tools-2.8.1/emacs/")
+(add-to-list 'load-path "/usr/local/Cellar/erlang/18.2.1/lib/erlang/lib/tools-2.8.2/emacs/")
+(setq erlang-root-dir "/usr/local/Cellar/erlang/18.2.1/lib/erlang/")
+(require 'erlang-start)
+
+;;
 ;; Lisp / Scheme / Gauche
 ;;
+
+;; cl
+
+;; Set your lisp system and, optionally, some contribs
+(require 'slime)
+(setq inferior-lisp-program "sbcl")
+(setq slime-contribs '(slime-fancy))
+(slime-setup '(slime-repl slime-fancy slime-banner))
+
+;;; scheme
 
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
@@ -458,6 +604,7 @@
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 (add-hook 'inferior-scheme-mode-hook  #'enable-paredit-mode)
+(add-hook 'slime-repl-mode-hook       #'enable-paredit-mode)
 
 (add-hook 'paredit-mode-hook
           (lambda ()
@@ -467,7 +614,7 @@
 (global-set-key (kbd "C-c h I") 'gauche-info)
 (defun gauche-info ()
   (interactive)
-  (info "/usr/local/share/info/gauche-refe.info-1.gz"))
+  (info "/usr/local/share/info/gauche-refe.info"))
 
 ;; run gosh
 (global-set-key (kbd "C-x S") (lambda () (interactive) (run-scheme "gosh")))
@@ -536,3 +683,23 @@
 
 ;; dired
 (put 'dired-find-alternate-file 'disabled nil)
+
+(let ((path (expand-file-name "~/.emacs.d/local.el")))
+  (when (file-exists-p path) (load-file path)))
+
+;;
+;; writen by emacs
+;;
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(helm-etags-file ((t (:foreground "Orange" :underline t)))))
