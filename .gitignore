@@ -6,3 +6,7 @@
 .emacs.d/recentf
 .emacs.d/tutorial
 .emacs.d/ensime/
+.emacs.d/bookmarks
+.emacs.d/local.el
+.emacs.d/semanticdb/
+.emacs.d/target/
