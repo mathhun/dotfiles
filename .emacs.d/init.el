@@ -554,8 +554,8 @@
 (require 'scala-mode2)
 (add-to-list 'auto-mode-alist '("\.sbt$" . scala-mode))
 
-;;(require 'ensime)
-;;(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+(require 'ensime)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 (add-hook 'scala-mode-hook
           (lambda ()
@@ -580,7 +580,7 @@
 (add-to-list 'load-path "/usr/local/Cellar/erlang/18.1/lib/erlang/lib/tools-2.8.1/emacs/")
 (add-to-list 'load-path "/usr/local/Cellar/erlang/18.2.1/lib/erlang/lib/tools-2.8.2/emacs/")
 (setq erlang-root-dir "/usr/local/Cellar/erlang/18.2.1/lib/erlang/")
-(require 'erlang-start)
+;;(require 'erlang-start)
 
 ;;
 ;; Lisp / Scheme / Gauche
