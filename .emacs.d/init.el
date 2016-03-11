@@ -83,16 +83,17 @@
 ;; help command
 (global-set-key (kbd "C-c h") 'help-command)
 
-;; font
-(when (eq window-system 'ns)
-  (set-face-attribute 'default nil :family "Migu 1M" :height 120)
-  (setq line-spacing 0)
+(defmacro when-mac (&rest body)
+  `(when (eq system-type 'darwin) ,@body))
 
-  ;;(set-face-attribute 'default nil :family "Source Han Code JP" :height 100)
-  )
+;; font
+(when-mac
+ (set-face-attribute 'default nil :family "Migu 1M" :height 120)
+ (setq line-spacing 0))
 
 ;; color
-(load-theme 'deeper-blue t)
+(when-mac
+ (load-theme 'deeper-blue t))
 
 ;; highight whitespace
 (require 'whitespace)
@@ -130,9 +131,9 @@
 (cask-initialize)
 
 ;; PATH
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-env "GOPATH"))
+(when-mac
+ (exec-path-from-shell-initialize)
+ (exec-path-from-shell-copy-env "GOPATH"))
 
 ;;
 ;; recentf
