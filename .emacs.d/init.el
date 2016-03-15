@@ -83,16 +83,17 @@
 ;; help command
 (global-set-key (kbd "C-c h") 'help-command)
 
-;; font
-(when (eq window-system 'ns)
-  (set-face-attribute 'default nil :family "Migu 1M" :height 120)
-  (setq line-spacing 0)
+(defmacro when-mac (&rest body)
+  `(when (eq system-type 'darwin) ,@body))
 
-  ;;(set-face-attribute 'default nil :family "Source Han Code JP" :height 100)
-  )
+;; font
+(when-mac
+ (set-face-attribute 'default nil :family "Migu 1M" :height 120)
+ (setq line-spacing 0))
 
 ;; color
-(load-theme 'deeper-blue t)
+(when-mac
+ (load-theme 'deeper-blue t))
 
 ;; highight whitespace
 (require 'whitespace)
@@ -130,9 +131,9 @@
 (cask-initialize)
 
 ;; PATH
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-env "GOPATH"))
+(when-mac
+ (exec-path-from-shell-initialize)
+ (exec-path-from-shell-copy-env "GOPATH"))
 
 ;;
 ;; recentf
@@ -165,6 +166,8 @@
 
   ;; Disable helm in some functions
   (add-to-list 'helm-completing-read-handlers-alist '(find-alternate-file . nil))
+
+  (setq helm-buffer-details-flag nil)
 
   ;; Emulate `kill-line' in helm minibuffer
   (setq helm-delete-minibuffer-contents-from-point t)
@@ -554,8 +557,8 @@
 (require 'scala-mode2)
 (add-to-list 'auto-mode-alist '("\.sbt$" . scala-mode))
 
-;;(require 'ensime)
-;;(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+(require 'ensime)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 (add-hook 'scala-mode-hook
           (lambda ()
@@ -580,7 +583,7 @@
 (add-to-list 'load-path "/usr/local/Cellar/erlang/18.1/lib/erlang/lib/tools-2.8.1/emacs/")
 (add-to-list 'load-path "/usr/local/Cellar/erlang/18.2.1/lib/erlang/lib/tools-2.8.2/emacs/")
 (setq erlang-root-dir "/usr/local/Cellar/erlang/18.2.1/lib/erlang/")
-(require 'erlang-start)
+;;(require 'erlang-start)
 
 ;;
 ;; Lisp / Scheme / Gauche

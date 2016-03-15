@@ -32,7 +32,6 @@
 (depends-on "flymake")
 (depends-on "flymake-cursor")
 (depends-on "flymake-easy")
-(depends-on "magit")
 (depends-on "elscreen" :git "git@github.com:knu/elscreen.git")
 (depends-on "pbcopy")
 (depends-on "paredit")
