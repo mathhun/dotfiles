@@ -37,6 +37,19 @@
 (setq mac-option-modifier nil)
 (global-set-key "\C-h" 'delete-backward-char)
 (global-set-key "\C-m" 'newline-and-indent)
+(define-key isearch-mode-map (kbd "C-h") 'isearch-del-char)
+(global-set-key (kbd "M-n") (lambda () (interactive) (scroll-up 1)))
+(global-set-key (kbd "M-p") (lambda () (interactive) (scroll-down 1)))
+(global-set-key (kbd "C-^") (lambda () (interactive) (switch-to-buffer (other-buffer))))
+
+;; backward kill word
+(defun delete-word (arg)
+  (interactive "p")
+  (delete-region (point) (progn (forward-word arg) (point))))
+(defun backward-delete-word (arg)
+  (interactive "p")
+  (delete-word (- arg)))
+(global-set-key (read-kbd-macro "M-h") 'backward-delete-word)
 
 ;; If the *scratch* buffer is killed, recreate it automatically
 ;; FROM: Morten Welind
