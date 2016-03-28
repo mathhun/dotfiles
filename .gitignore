@@ -1,4 +1,5 @@
 *~
+.DS_Store
 .emacs.d/auto-save-list
 .emacs.d/.cask
 .emacs.d/ac-comphist.dat
@@ -9,4 +10,8 @@
 .emacs.d/bookmarks
 .emacs.d/local.el
 .emacs.d/semanticdb/
-.emacs.d/target/
+
+.sbt/boot/
+.sbt/0.13/target/
+.sbt/0.13/plugins/*
+!.sbt/0.13/plugins/plugins.sbt
