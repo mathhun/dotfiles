@@ -565,9 +565,9 @@
             (electric-pair-mode t)
             (setq scala-indent:use-javadoc-style t)))
 
-;;(custom-set-variables
-;; '(ensime-sem-high-faces
-;;   '((var . scala-font-lock:var-face))))
+(custom-set-variables
+'(ensime-sem-high-faces
+  '((var . scala-font-lock:var-face))))
 
 ;;
 ;; Elixir
