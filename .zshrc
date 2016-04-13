@@ -29,8 +29,7 @@ function histall { history -E 1 }
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=$HOME/local/bin:$HOME/bin:$PATH
 export PATH=$HOME/.local/bin:$HOME/.cask/bin:$PATH
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+export PATH=$HOME/.conscript/bin:$PATH
 
 MAILPATH="/var/mail/$USER?${fg[green]}New mail arrived in \$_."
 MAILCHECK=10
