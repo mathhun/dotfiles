@@ -6,8 +6,11 @@
 #  Environment variables
 #
 
-export LANG=C
 export LANG=en_US.UTF-8
+export LC_CTYPE=
+export LC_ALL=
+export LANGUAGE=
+
 export EDITOR=vi
 export PAGER=less
 export LESS='-R'
