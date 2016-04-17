@@ -6,8 +6,11 @@
 #  Environment variables
 #
 
-export LANG=C
 export LANG=en_US.UTF-8
+export LC_CTYPE=
+export LC_ALL=
+export LANGUAGE=
+
 export EDITOR=vi
 export PAGER=less
 export LESS='-R'
@@ -26,8 +29,7 @@ function histall { history -E 1 }
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=$HOME/local/bin:$HOME/bin:$PATH
 export PATH=$HOME/.local/bin:$HOME/.cask/bin:$PATH
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+export PATH=$HOME/.conscript/bin:$PATH
 
 MAILPATH="/var/mail/$USER?${fg[green]}New mail arrived in \$_."
 MAILCHECK=10
