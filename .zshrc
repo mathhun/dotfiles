@@ -30,6 +30,7 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=$HOME/local/bin:$HOME/bin:$PATH
 export PATH=$HOME/.local/bin:$HOME/.cask/bin:$PATH
 export PATH=$HOME/.conscript/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 
 MAILPATH="/var/mail/$USER?${fg[green]}New mail arrived in \$_."
 MAILCHECK=10

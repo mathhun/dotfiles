@@ -599,6 +599,20 @@
 ;;(require 'erlang-start)
 
 ;;
+;; Rust
+;;
+
+(autoload 'rust-mode "rust-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+
+(add-hook 'racer-mode-hook #'company-mode)
+(global-set-key (kbd "TAB") #'company-indent-or-complete-common) ;
+(setq company-tooltip-align-annotations t)
+
+;;
 ;; Lisp / Scheme / Gauche
 ;;
 
@@ -698,7 +712,6 @@
 (put 'with-signal-handlers 'scheme-indent-function 1)
 
 ;; dired
-(put 'dired-find-alternate-file 'disabled nil)
 
 (let ((path (expand-file-name "~/.emacs.d/local.el")))
   (when (file-exists-p path) (load-file path)))
@@ -719,3 +732,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(helm-etags-file ((t (:foreground "Orange" :underline t)))))
+(put 'dired-find-alternate-file 'disabled nil)
