@@ -445,40 +445,6 @@
 (flycheck-add-next-checker 'javascript-jshint 'javascript-gjslint)
 
 ;;
-;; UnityJS
-;;
-
-;; UnityJS mode for emacs
-;;(autoload 'unityjs-mode "unityjs-mode" "Major mode for editing Unity Javascript code." t)
-;;(require 'unityjs-mode)
-
-;;
-;; C# / Unity
-;;
-
-(require 'csharp-mode)
-(add-hook 'csharp-mode-hook
-          '(lambda ()
-             (setq indent-tabs-mode nil)
-             (setq c-basic-offset 4)
-             (c-set-offset 'substatement-open 0)
-             (flycheck-mode 1)
-             (omnisharp-mode)
-             (auto-complete-mode)
-             (local-set-key (kbd "C-c i") 'omnisharp-auto-complete)
-             (local-set-key (kbd "M-.") 'omnisharp-go-to-definition)
-             ))
-
-;; brew install mono
-;; git clone https://github.com/nosami/OmniSharpServer.git
-;; cd OmniSharpServer
-;; git submodule update --init --recursive
-;; xbuild
-(require 'omnisharp)
-(setq omnisharp-server-executable-path
-      (expand-file-name "~/dev/src/github.com/nosami/OmniSharpServer/OmniSharp/bin/Debug/OmniSharp.exe"))
-
-;;
 ;; web-mode
 ;;
 
@@ -711,8 +677,6 @@
 (put 'with-time-counter 'scheme-indent-function 1)
 (put 'with-signal-handlers 'scheme-indent-function 1)
 
-;; dired
-
 (let ((path (expand-file-name "~/.emacs.d/local.el")))
   (when (file-exists-p path) (load-file path)))
 
@@ -732,4 +696,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(helm-etags-file ((t (:foreground "Orange" :underline t)))))
+
 (put 'dired-find-alternate-file 'disabled nil)
