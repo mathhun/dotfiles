@@ -71,3 +71,5 @@
 (depends-on "stan-mode")
 (depends-on "ace-jump-mode")
 (depends-on "slime")
+(depends-on "rust-mode")
+(depends-on "racer")
