@@ -28,6 +28,7 @@ call dein#add('scrooloose/nerdtree')
 call dein#add('scrooloose/syntastic')
 call dein#add('tpope/vim-surround' )
 call dein#add('bronson/vim-trailing-whitespace')
+call dein#add('lambdalisue/vim-gista', {'on_cmd': 'Gista'})
 " scala
 call dein#add('derekwyatt/vim-scala')
 call dein#add('ensime/ensime-vim')
