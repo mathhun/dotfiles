@@ -2,7 +2,7 @@ syntax on
 
 "dein Scripts-----------------------------
 if &compatible
-  set nocompatible               " Be iMproved
+  set nocompatible
 endif
 
 " Required:
@@ -29,6 +29,9 @@ call dein#add('scrooloose/syntastic')
 call dein#add('tpope/vim-surround' )
 call dein#add('bronson/vim-trailing-whitespace')
 call dein#add('lambdalisue/vim-gista', {'on_cmd': 'Gista'})
+call dein#add('tomasr/molokai')
+call dein#add('ciaranm/inkpot')
+call dein#add('nathanaelkane/vim-indent-guides')
 " scala
 call dein#add('derekwyatt/vim-scala')
 call dein#add('ensime/ensime-vim')
@@ -53,6 +56,10 @@ au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 " programming
+set ts=2 sw=2 et
+set background=dark
+colorscheme delek
+
 " scala
 autocmd BufWritePost *.scala :EnTypeCheck
 nnoremap <localleader>t :EnTypeCheck<CR>
