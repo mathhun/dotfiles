@@ -73,7 +73,6 @@ insteadOf = git@github.com:/ghc/packages/
 [difftool]
 
 [merge]
-ff = false
 conflictstyle = diff3
 
 [pager]
