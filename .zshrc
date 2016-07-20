@@ -241,6 +241,12 @@ add-zsh-hook precmd _update_vcs_info_msg
 if [[ -f $HOME/.zsh/antigen/antigen.zsh ]]; then
     source $HOME/.zsh/antigen/antigen.zsh
     antigen bundle zsh-users/zsh-syntax-highlighting
+
+    # knu/zsh-git-escape-magic
+    antigen bundle knu/zsh-git-escape-magic
+    autoload -Uz git-escape-magic
+    git-escape-magic
+
     antigen apply
 fi
 
