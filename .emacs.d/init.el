@@ -542,18 +542,16 @@
 
 (require 'scala-mode)
 (add-to-list 'auto-mode-alist '("\.sbt$" . scala-mode))
-
-(require 'ensime)
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-
 (add-hook 'scala-mode-hook
           (lambda ()
             (electric-pair-mode t)
             (setq scala-indent:use-javadoc-style t)))
 
-(custom-set-variables
-'(ensime-sem-high-faces
-  '((var . scala-font-lock:var-face))))
+;; (require 'ensime)
+;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+;; (custom-set-variables
+;; '(ensime-sem-high-faces
+;;   '((var . scala-font-lock:var-face))))
 
 ;;
 ;; Elixir
