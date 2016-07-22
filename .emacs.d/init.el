@@ -337,13 +337,13 @@
 ;; programming
 ;;
 
-;; (yas-global-mode t)
-;; (require 'auto-complete)
-;; (require 'auto-complete-config)
-;; (ac-config-default)
-;; (global-auto-complete-mode t)
-;; (global-set-key (kbd "C-c TAB") 'auto-complete)
-;; (setq ac-use-menu-map t)
+(yas-global-mode t)
+(require 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
+(global-auto-complete-mode t)
+(global-set-key (kbd "C-c TAB") 'auto-complete)
+(setq ac-use-menu-map t)
 
 ;; flymake
 (require 'flymake)
@@ -578,15 +578,15 @@
 ;; Rust
 ;;
 
-(autoload 'rust-mode "rust-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
-
-(add-hook 'rust-mode-hook #'racer-mode)
-(add-hook 'racer-mode-hook #'eldoc-mode)
-
-(add-hook 'racer-mode-hook #'company-mode)
-(global-set-key (kbd "TAB") #'company-indent-or-complete-common) ;
-(setq company-tooltip-align-annotations t)
+;;(autoload 'rust-mode "rust-mode" nil t)
+;;(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+;;
+;;(add-hook 'rust-mode-hook #'racer-mode)
+;;(add-hook 'racer-mode-hook #'eldoc-mode)
+;;
+;;(add-hook 'racer-mode-hook #'company-mode)
+;;(global-set-key (kbd "TAB") #'company-indent-or-complete-common) ;
+;;(setq company-tooltip-align-annotations t)
 
 ;;
 ;; Lisp / Scheme / Gauche
@@ -708,3 +708,4 @@
  '(helm-etags-file ((t (:foreground "Orange" :underline t)))))
 
 (put 'dired-find-alternate-file 'disabled nil)
+
