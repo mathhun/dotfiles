@@ -143,6 +143,14 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
+;;
+;; package-install
+;;
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
+
 ;; PATH
 (when-mac
  (exec-path-from-shell-initialize)
@@ -329,13 +337,13 @@
 ;; programming
 ;;
 
-(yas-global-mode t)
-(require 'auto-complete)
-(require 'auto-complete-config)
-(ac-config-default)
-(global-auto-complete-mode t)
-(global-set-key (kbd "C-c TAB") 'auto-complete)
-(setq ac-use-menu-map t)
+;; (yas-global-mode t)
+;; (require 'auto-complete)
+;; (require 'auto-complete-config)
+;; (ac-config-default)
+;; (global-auto-complete-mode t)
+;; (global-set-key (kbd "C-c TAB") 'auto-complete)
+;; (setq ac-use-menu-map t)
 
 ;; flymake
 (require 'flymake)
@@ -535,7 +543,7 @@
 ;; Scala
 ;;
 
-(require 'scala-mode2)
+(require 'scala-mode)
 (add-to-list 'auto-mode-alist '("\.sbt$" . scala-mode))
 
 (require 'ensime)
