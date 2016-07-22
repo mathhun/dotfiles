@@ -437,17 +437,21 @@
 
 ;; npm install -g jshint
 
+(require 'js)
+(require 'js2-mode)
+(require 'paredit)
+(require 'jsx-mode)
+
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 
 ;;(add-hook 'js-mode-hook 'js2-minor-mode)
 ;;(add-hook 'js2-mode-hook 'ac-js2-mode)
+(add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
+(add-hook 'js2-jsx-mode-hook (lambda () (setq js2-basic-offset 2)))
 (add-hook 'js2-jsx-mode-hook 'flycheck-mode)
 
-(require 'js)
-(require 'js2-mode)
-(require 'paredit)
 (define-key js-mode-map "{" 'paredit-open-curly)
 (define-key js-mode-map "}" 'paredit-close-curly-and-newline)
 
@@ -455,10 +459,17 @@
 (flycheck-add-mode 'javascript-eslint 'js2-jsx-mode)
 
 ;;
-;; web-mode
+;; React / JSX / web-mode
 ;;
 
 (require 'web-mode)
+
+(defadvice web-mode-highlight-part (around tweak-jsx activate)
+  (if (equal web-mode-content-type "jsx")
+      (let ((web-mode-enable-part-face nil))
+        ad-do-it)
+    ad-do-it))
+
 (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
 (add-to-list 'auto-mode-alist '("\.ctp$" . web-mode))
 ;; indent
@@ -469,20 +480,9 @@
 (setq web-mode-style-padding 4)
 (setq web-mode-script-padding 4)
 
-;;
-;; React / JSX
-;;
-
-(defadvice web-mode-highlight-part (around tweak-jsx activate)
-  (if (equal web-mode-content-type "jsx")
-      (let ((web-mode-enable-part-face nil))
-        ad-do-it)
-    ad-do-it))
-
 ;; npm install -g jsxhint
 (flycheck-define-checker jsxhint-checker
   "A JSX syntax and style checker based on JSXHint."
-
   :command ("jsxhint" source)
   :error-patterns
   ((error line-start (1+ nonl) ": line " line ", col " column ", " (message) line-end))
@@ -494,9 +494,6 @@
               ;; enable flycheck
               (flycheck-select-checker 'jsxhint-checker)
               (flycheck-mode))))
-
-(require 'jsx-mode)
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
 
 ;;
 ;; Haskell
