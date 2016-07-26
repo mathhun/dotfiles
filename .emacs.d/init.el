@@ -140,8 +140,12 @@
 ;;
 
 ;; curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
-(require 'cask "~/.cask/cask.el")
-(cask-initialize)
+;; curl -fsSkL https://raw.github.com/cask/cask/master/go | python
+(when (require 'cask "~/.cask/cask.el" t)
+  (cask-initialize))
+(package-initialize)
+(require 'use-package)
+(pallet-mode t)
 
 ;;
 ;; package-install
