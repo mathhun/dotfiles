@@ -11,7 +11,12 @@
 .emacs.d/local.el
 .emacs.d/semanticdb/
 
+.vim/
+
 .sbt/boot/
 .sbt/0.13/target/
-.sbt/0.13/plugins/*
-!.sbt/0.13/plugins/plugins.sbt
+.sbt/0.13/plugins/target
+.sbt/0.13/plugins/project
+
+.ammonite/history
+.ammonite/cache
