@@ -1,3 +1,12 @@
+// load.ivy("com.lihaoyi" %% "ammonite-shell" % ammonite.Constants.version)
+// @
+// val shellSession = ammonite.shell.ShellSession()
+// import shellSession._
+// import ammonite.shell.PPrints._
+// import ammonite.ops._
+// import ammonite.shell._
+// ammonite.shell.Configure(repl, wd)
+
 load.ivy("org.scalaz" %% "scalaz-core" % "7.2.4")
 load.ivy("com.chuusai" %% "shapeless" % "2.3.1")
 
