@@ -18,3 +18,7 @@ shellPrompt := { state =>
   formatText("\u276f")(yellow, black) +
   formatText("\u276f ")(red, black)
 }
+
+libraryDependencies += "com.lihaoyi" % "ammonite" % "0.7.0" % "test" cross CrossVersion.full
+initialCommands in (Test, console) := """ammonite.Main().run()"""
+// sbt projectName/test:console
