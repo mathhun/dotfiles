@@ -19,21 +19,14 @@ shellPrompt := { state =>
   formatText("\u276f ")(red, black)
 }
 
-libraryDependencies += "com.lihaoyi" % "ammonite" % "0.7.0" % "test" cross CrossVersion.full
-initialCommands in (Test, console) := """ammonite.Main().run()"""
-// sbt projectName/test:console
-
-//
-// aliases
-//
-
 addCommandAlias("c", "~compile")
-//addCommandAlias("C", "~compile")
+addCommandAlias("C", "compile")
 addCommandAlias("s", "console")
 addCommandAlias("l", "reload")
+addCommandAlias("i", "inspect")
 
 addCommandAlias("r", "~run")
-//addCommandAlias("R", "~run")
+addCommandAlias("R", "run")
 addCommandAlias("m", "runMain")
 
 addCommandAlias("p", "package")
