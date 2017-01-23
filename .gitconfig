@@ -1,6 +1,6 @@
 [user]
-name = mathhun
-email = achemer@gmail.com
+name = n4to4
+email = n4to4k@gmail.com
 
 [core]
 whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
@@ -37,6 +37,7 @@ st = status
 ci = commit -a
 cv = commit -v
 br = branch
+b  = branch
 co = checkout
 di = diff
 lg = log -p
@@ -50,6 +51,7 @@ alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\
 ta = log --graph --branches --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
 ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
 refresh= !git fetch origin && git remote prune origin
+rv = remote -v
 
 [push]
 default = matching
@@ -100,3 +102,6 @@ diff = diff-highlight | less
 # git add path/to/conflicting/file
 #
 # git commit
+
+[pull]
+	ff = only
