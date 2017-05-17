@@ -102,6 +102,3 @@ diff = diff-highlight | less
 # git add path/to/conflicting/file
 #
 # git commit
-
-[pull]
-	ff = only

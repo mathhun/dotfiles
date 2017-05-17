@@ -544,7 +544,9 @@
 ;; Scala
 ;;
 
-(require 'scala-mode)
+(use-package scala-mode
+  :interpreter
+  ("scala" . scala-mode))
 (add-to-list 'auto-mode-alist '("\.sbt$" . scala-mode))
 (add-to-list 'auto-mode-alist '("\.sc$" . scala-mode))
 (add-hook 'scala-mode-hook
