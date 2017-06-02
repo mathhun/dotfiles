@@ -152,7 +152,8 @@
 ;;
 
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
 ;; PATH
@@ -580,15 +581,22 @@
 ;; Rust
 ;;
 
-;;(autoload 'rust-mode "rust-mode" nil t)
-;;(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
-;;
-;;(add-hook 'rust-mode-hook #'racer-mode)
-;;(add-hook 'racer-mode-hook #'eldoc-mode)
-;;
-;;(add-hook 'racer-mode-hook #'company-mode)
-;;(global-set-key (kbd "TAB") #'company-indent-or-complete-common) ;
-;;(setq company-tooltip-align-annotations t)
+(autoload 'rust-mode "rust-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+
+(add-to-list 'exec-path (expand-file-name "~/.cargo/bin/"))
+(eval-after-load "rust-mode" '(setq-default rust-format-on-save t))
+(add-hook 'rust-mode-hook
+          (lambda ()
+            (racer-mode)
+            (flycheck-rust-setup)))
+(add-hook 'racer-mode-hook #'eldoc-mode)
+(add-hook 'racer-mode-hook
+          (lambda ()
+            (company-mode)
+            (electric-pair-mode t)
+            (set (make-variable-buffer-local 'company-idle-delay) 0.1)
+            (set (make-variable-buffer-local 'company-minimum-prefix-length) 0)))
 
 ;;
 ;; Lisp / Scheme / Gauche
