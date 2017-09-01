@@ -32,12 +32,12 @@ addCommandAlias("m", "runMain")
 addCommandAlias("p", "package")
 addCommandAlias("a", "assembly")
 
-addCommandAlias("t", "test")
-addCommandAlias("T", "~test")
-addCommandAlias("to", "testOnly")
-addCommandAlias("TO", "~testOnly")
-addCommandAlias("tq", "testQuick")
-addCommandAlias("TQ", "~testQuick")
+addCommandAlias("t", "~test")
+addCommandAlias("T", "test")
+addCommandAlias("to", "~testOnly")
+addCommandAlias("TO", "testOnly")
+addCommandAlias("tq", "~testQuick")
+addCommandAlias("TQ", "testQuick")
 
 addCommandAlias("beginDebug", List(
   "set maxErrors := 5",
