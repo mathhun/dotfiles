@@ -38,3 +38,15 @@ addCommandAlias("to", "testOnly")
 addCommandAlias("TO", "~testOnly")
 addCommandAlias("tq", "testQuick")
 addCommandAlias("TQ", "~testQuick")
+
+addCommandAlias("beginDebug", List(
+  "set maxErrors := 5",
+  "set logLevel := Level.Error",
+  "set triggeredMessage := Watched.clearWhenTriggered"
+).mkString(";", ";", ""))
+
+addCommandAlias("endDebug", List(
+  "set maxErrors := 100",
+  "set logLevel := Level.Info",
+  "set triggeredMessage := Watched.defaultTriggeredMessage"
+).mkString(";", ";", ""))
