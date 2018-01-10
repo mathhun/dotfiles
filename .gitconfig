@@ -1,6 +1,6 @@
 [user]
-name = n4to4
-email = n4to4k@gmail.com
+	name = n4to4
+	email = n4to4k@gmail.com
 
 [core]
 whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
@@ -105,3 +105,8 @@ diff = diff-highlight | less
 
 [pull]
 	ff = only
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
