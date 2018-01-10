@@ -23,5 +23,10 @@
 .sbt/0.13/templates/
 .sbt/ghpages/
 
+.sbt/1.0/target/
+.sbt/1.0/templates/
+.sbt/1.0/zinc/
+.sbt/preloaded/
+
 .ammonite/history
 .ammonite/cache
