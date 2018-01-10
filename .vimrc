@@ -1,20 +1,21 @@
-execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+
+Plug 'w0rp/ale'
+Plug 'vim-airline/vim-airline'
+Plug 'eagletmt/ghcmod-vim'
+Plug 'Shougo/vimproc'
+
+call plug#end()
+
 syntax on
 filetype plugin indent on
+set guicursor+=a:blinkon0
 
-" Unite
-" let g:unite_enable_start_insert=1
-" noremap <C-P> :Unite buffer<CR>
-" noremap <C-N> :Unite -buffer-name=file file<CR>
-" au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-" au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-
-" programming
 set ts=2 sw=2 et
-set background=dark
-colorscheme delek
+set autochdir
+
+" ctags
+nnoremap <C-]> g<C-]>
 
 " scala
-autocmd BufWritePost *.scala :EnTypeCheck
-nnoremap <localleader>t :EnTypeCheck<CR>
-au FileType scala nnoremap <localleader>df :EnDeclaration<CR>
+au BufNewFile,BufRead *.scala set tags+=$HOME/scala.tags
