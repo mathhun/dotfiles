@@ -4,6 +4,7 @@ Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'Shougo/vimproc'
+Plug 'derekwyatt/vim-scala'
 
 call plug#end()
 
@@ -19,3 +20,6 @@ nnoremap <C-]> g<C-]>
 
 " scala
 au BufNewFile,BufRead *.scala set tags+=$HOME/scala.tags
+
+" netrw
+let g:netrw_silent = 1

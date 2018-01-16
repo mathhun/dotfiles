@@ -26,6 +26,8 @@
 .sbt/1.0/target/
 .sbt/1.0/templates/
 .sbt/1.0/zinc/
+.sbt/1.0/plugins/target/
+.sbt/1.0/plugins/project/
 .sbt/preloaded/
 
 .ammonite/history
