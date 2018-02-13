@@ -414,7 +414,7 @@
             (setq imenu-create-index-function 'python-imenu-create-index)))
 
 ;; quickrun
-(quickrun-add-command "python" '((:command . "python")) :override t)
+;;(quickrun-add-command "python" '((:command . "python")) :override t)
 
 ;;
 ;; JavaScript
