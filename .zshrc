@@ -187,18 +187,6 @@ alias -g H='| head'
 alias -g T='| tail'
 alias -g V='| vim -R -'
 
-alias -s hs=runhaskell
-alias -s scm=gosh
-alias -s lisp=clisp
-alias -s pl=perl
-alias -s rb=ruby
-alias -s py=python
-
-compctl -g '*.scm' + -f gosh
-compctl -g '*.rb' ruby
-compctl -g '*.hs' runhaskell
-compctl -g '*.hs' runghc
-
 # alias
 if [ -e ~/.aliases ];then
   source ~/.aliases
