@@ -581,6 +581,10 @@
 ;; Rust
 ;;
 
+;; $ cargo install rustfmt-nightly --force
+;; $ cargo install racer
+;; $ rustup component add rust-src
+
 (autoload 'rust-mode "rust-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
 
@@ -595,8 +599,8 @@
           (lambda ()
             (company-mode)
             (electric-pair-mode t)
-            (set (make-variable-buffer-local 'company-idle-delay) 0.1)
-            (set (make-variable-buffer-local 'company-minimum-prefix-length) 0)))
+            (set (make-variable-buffer-local 'company-idle-delay) 0.3)
+            (set (make-variable-buffer-local 'company-minimum-prefix-length) 3)))
 
 ;;
 ;; Lisp / Scheme / Gauche
