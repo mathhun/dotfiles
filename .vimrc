@@ -1,9 +1,9 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
-Plug 'eagletmt/ghcmod-vim'
-Plug 'Shougo/vimproc'
+"Plug 'eagletmt/ghcmod-vim'
+"Plug 'Shougo/vimproc'
 Plug 'derekwyatt/vim-scala'
 
 call plug#end()
