@@ -174,6 +174,9 @@ alias realias='$EDITOR ~/.aliases; source ~/.aliases'
 alias so='source ~/.zshrc'
 alias dot='cd ~/dotfiles'
 alias ag='ag --pager=less'
+if type exa >/dev/null 2>&1; then
+  alias ls='exa --time-style=long-iso --git'
+fi
 
 alias -g L='| TERM=vt100 less'
 alias -g LL='2>&1 | TERM=vt100 less'
