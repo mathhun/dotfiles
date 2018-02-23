@@ -23,3 +23,6 @@ au BufNewFile,BufRead *.scala set tags+=$HOME/scala.tags
 
 " netrw
 let g:netrw_silent = 1
+
+" font
+set guifont=Osaka-Mono:h14

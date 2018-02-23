@@ -394,7 +394,7 @@
             (flymake-mode t)))
 
 ;; etags
-(require 'helm-etags+)
+;; (require 'helm-etags+)
 
 (when (require 'swoop)
   (global-set-key (kbd "M-o")   'swoop)
@@ -414,27 +414,7 @@
             (setq imenu-create-index-function 'python-imenu-create-index)))
 
 ;; quickrun
-(quickrun-add-command "python" '((:command . "python")) :override t)
-
-;;
-;; Golang
-;;
-
-;; go get -u golang.org/x/tools/cmd/goimports
-;; go get -u code.google.com/p/rog-go/exp/cmd/godef
-;; go get -u github.com/nsf/gocode
-(require 'go-mode-autoloads)
-(require 'go-autocomplete)
-
-(add-hook 'go-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook 'gofmt-before-save)
-            (setq gofmt-command "goimports")
-            (local-set-key (kbd "M-.") 'godef-jump)
-            (local-set-key (kbd "M-,") 'pop-tag-mark)
-            (local-set-key (kbd "C-c i") 'go-goto-imports)
-            (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
-            ))
+;;(quickrun-add-command "python" '((:command . "python")) :override t)
 
 ;;
 ;; JavaScript
@@ -460,8 +440,8 @@
 (define-key js-mode-map "{" 'paredit-open-curly)
 (define-key js-mode-map "}" 'paredit-close-curly-and-newline)
 
-(flycheck-add-next-checker 'javascript-jshint 'javascript-gjslint)
-(flycheck-add-mode 'javascript-eslint 'js2-jsx-mode)
+;;(flycheck-add-next-checker 'javascript-jshint 'javascript-gjslint)
+;;(flycheck-add-mode 'javascript-eslint 'js2-jsx-mode)
 
 ;;
 ;; React / JSX / web-mode
@@ -581,6 +561,10 @@
 ;; Rust
 ;;
 
+;; $ cargo install rustfmt-nightly --force
+;; $ cargo install racer
+;; $ rustup component add rust-src
+
 (autoload 'rust-mode "rust-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
 
@@ -595,8 +579,8 @@
           (lambda ()
             (company-mode)
             (electric-pair-mode t)
-            (set (make-variable-buffer-local 'company-idle-delay) 0.1)
-            (set (make-variable-buffer-local 'company-minimum-prefix-length) 0)))
+            (set (make-variable-buffer-local 'company-idle-delay) 0.3)
+            (set (make-variable-buffer-local 'company-minimum-prefix-length) 3)))
 
 ;;
 ;; Lisp / Scheme / Gauche
