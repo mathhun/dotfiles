@@ -486,6 +486,7 @@
 ;;
 
 ;; https://github.com/serras/emacs-haskell-tutorial/blob/master/tutorial.md
+;; stack install hindent hasktags stylysh-haskell structured-haskell-mode
 
 (require 'haskell-mode)
 (custom-set-variables '(haskell-process-type 'stack-ghci))
