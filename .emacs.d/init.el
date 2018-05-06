@@ -491,6 +491,7 @@
 (require 'haskell-mode)
 (custom-set-variables '(haskell-process-type 'stack-ghci))
 (add-hook 'haskell-mode-hook #'hindent-mode)
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 
 (custom-set-variables
   '(haskell-process-suggest-remove-import-lines t)
@@ -511,9 +512,9 @@
 
 (add-to-list 'exec-path "~/.local/bin")
 
-(add-to-list 'load-path (expand-file-name "~/dev/src/github.com/chrisdone/structured-haskell-mode/elisp"))
-(require 'shm)
-(add-hook 'haskell-mode-hook 'structured-haskell-mode)
+;; (add-to-list 'load-path (expand-file-name "~/dev/src/github.com/chrisdone/structured-haskell-mode/elisp"))
+;; (require 'shm)
+;; (add-hook 'haskell-mode-hook 'structured-haskell-mode)
 
 ;;
 ;; Scala
