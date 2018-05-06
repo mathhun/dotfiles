@@ -511,6 +511,10 @@
 
 (add-to-list 'exec-path "~/.local/bin")
 
+(add-to-list 'load-path (expand-file-name "~/dev/src/github.com/chrisdone/structured-haskell-mode/elisp"))
+(require 'shm)
+(add-hook 'haskell-mode-hook 'structured-haskell-mode)
+
 ;;
 ;; Scala
 ;;

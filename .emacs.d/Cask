@@ -11,6 +11,7 @@
 (depends-on "auto-complete")
 (depends-on "bind-key")
 (depends-on "cask")
+(depends-on "company-ghc")
 (depends-on "dash")
 (depends-on "drag-stuff")
 (depends-on "elixir-mode")
