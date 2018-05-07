@@ -154,6 +154,7 @@
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (package-initialize)
 
 ;; PATH
@@ -414,7 +415,7 @@
             (setq imenu-create-index-function 'python-imenu-create-index)))
 
 ;; quickrun
-(quickrun-add-command "python" '((:command . "python")) :override t)
+;;(quickrun-add-command "python" '((:command . "python")) :override t)
 
 ;;
 ;; JavaScript
@@ -484,42 +485,36 @@
 ;; Haskell
 ;;
 
+;; https://github.com/serras/emacs-haskell-tutorial/blob/master/tutorial.md
+;; stack install hindent hasktags stylysh-haskell structured-haskell-mode
+
 (require 'haskell-mode)
-(setq haskell-program-name "stack ghci")
-(autoload 'haskell-mode "haskell-mode" nil t)
-(autoload 'haskell-cabal "haskell-cabal" nil t)
-
-(add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
-(add-to-list 'auto-mode-alist '("\\.lhs$" . literate-haskell-mode))
-(add-to-list 'auto-mode-alist '("\\.cabal\\'" . haskell-cabal-mode))
-
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'font-lock-mode)
-(add-hook 'haskell-mode-hook 'imenu-add-menubar-index)
-(add-hook 'haskell-mode-hook 'haskell-indentation-mode)
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-
-(add-to-list 'interpreter-mode-alist '("runghc" . haskell-mode))
-(add-to-list 'interpreter-mode-alist '("runhaskell" . haskell-mode))
-
-;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+(custom-set-variables '(haskell-process-type 'stack-ghci))
+(add-hook 'haskell-mode-hook #'hindent-mode)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
-;; ghc
+(custom-set-variables
+  '(haskell-process-suggest-remove-import-lines t)
+  '(haskell-process-auto-import-loaded-modules t)
+  '(haskell-process-log t))
+(eval-after-load 'haskell-mode '(progn
+  (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+  (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+  (define-key haskell-mode-map (kbd "C-c C-n C-t") 'haskell-process-do-type)
+  (define-key haskell-mode-map (kbd "C-c C-n C-i") 'haskell-process-do-info)
+  (define-key haskell-mode-map (kbd "C-c C-n C-c") 'haskell-process-cabal-build)
+  (define-key haskell-mode-map (kbd "C-c C-n c") 'haskell-process-cabal)))
+(eval-after-load 'haskell-cabal '(progn
+  (define-key haskell-cabal-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+  (define-key haskell-cabal-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
+  (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
+  (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)))
+
 (add-to-list 'exec-path "~/.local/bin")
 
-(autoload 'ghc-init "ghc" nil t)
-(add-hook 'haskell-mode-hook
-          (lambda ()
-            (ghc-init)
-            (flymake-mode)))
-
-(defadvice inferior-haskell-load-file (after change-focus-after-load)
-  "Change focus to GHCi window after C-c C-l command"
-  (other-window 1))
-(ad-activate 'inferior-haskell-load-file)
+;; (add-to-list 'load-path (expand-file-name "~/dev/src/github.com/chrisdone/structured-haskell-mode/elisp"))
+;; (require 'shm)
+;; (add-hook 'haskell-mode-hook 'structured-haskell-mode)
 
 ;;
 ;; Scala

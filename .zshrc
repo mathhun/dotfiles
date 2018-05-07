@@ -174,6 +174,9 @@ alias realias='$EDITOR ~/.aliases; source ~/.aliases'
 alias so='source ~/.zshrc'
 alias dot='cd ~/dotfiles'
 alias ag='ag --pager=less'
+if type exa >/dev/null 2>&1; then
+  alias ls='exa --time-style=long-iso --git'
+fi
 
 alias -g L='| TERM=vt100 less'
 alias -g LL='2>&1 | TERM=vt100 less'
@@ -343,3 +346,7 @@ fi
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 export PATH="$HOME/.yarn/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
