@@ -492,6 +492,7 @@
 (custom-set-variables '(haskell-process-type 'stack-ghci))
 (add-hook 'haskell-mode-hook #'hindent-mode)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(add-hook 'haskell-mode-hook (lambda () (electric-pair-mode t)))
 
 (custom-set-variables
   '(haskell-process-suggest-remove-import-lines t)
