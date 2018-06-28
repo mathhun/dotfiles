@@ -1,0 +1,11 @@
+[build]
+jobs = 1
+
+[install]
+jobs = 1
+
+[alias]
+b = "build"
+i = "install"
+r = "run"
+rr = "run --release"
