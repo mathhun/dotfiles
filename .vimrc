@@ -5,6 +5,7 @@ Plug 'vim-airline/vim-airline'
 "Plug 'eagletmt/ghcmod-vim'
 "Plug 'Shougo/vimproc'
 Plug 'derekwyatt/vim-scala'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -23,6 +24,3 @@ au BufNewFile,BufRead *.scala set tags+=$HOME/scala.tags
 
 " netrw
 let g:netrw_silent = 1
-
-" font
-"set guifont=Osaka-Mono:h14
