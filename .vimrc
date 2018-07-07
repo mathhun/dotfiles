@@ -5,6 +5,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'derekwyatt/vim-scala'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -17,7 +18,10 @@ set ts=2 sw=2 et
 set autochdir
 set autowrite
 let mapleader = ","
-colorscheme dracula
+if has("gui_macvim")
+  colorscheme dracula
+endif
+set lines=999
 
 " quickfix
 map <C-n> :cnext<CR>
@@ -29,6 +33,16 @@ nnoremap <C-]> g<C-]>
 
 " netrw
 let g:netrw_silent = 1
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+set guifont=Source\ Code\ Pro\ for\ Powerline:h12
+"let g:Powerline_symbols = 'fancy'
+"set encoding=utf-8
+"set t_Co=256
+"set fillchars+=stl:\ ,stlnc:\
+"set termencoding=utf-8
 
 "
 " scala
