@@ -21,7 +21,10 @@ let mapleader = ","
 if has("gui_macvim")
   colorscheme dracula
 endif
-set lines=999
+set lines=999 columns=130
+
+" kaoriya
+set cmdheight=1
 
 " quickfix
 map <C-n> :cnext<CR>
@@ -36,13 +39,8 @@ let g:netrw_silent = 1
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-set guifont=Source\ Code\ Pro\ for\ Powerline:h12
-"let g:Powerline_symbols = 'fancy'
-"set encoding=utf-8
-"set t_Co=256
-"set fillchars+=stl:\ ,stlnc:\
-"set termencoding=utf-8
+let g:airline_powerline_fonts = 0
+set guifont=Migu\ 1M:h12
 
 "
 " scala
