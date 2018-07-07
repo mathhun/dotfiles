@@ -8,7 +8,7 @@
 
 export LANG=en_US.UTF-8
 export LC_CTYPE=
-export LC_ALL=
+export LC_ALL=$LANG
 export LANGUAGE=
 
 export EDITOR=vi
@@ -31,9 +31,6 @@ export PATH=$HOME/local/bin:$HOME/bin:$PATH
 export PATH=$HOME/.local/bin:$HOME/.cask/bin:$PATH
 export PATH=$HOME/.conscript/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
-
-MAILPATH="/var/mail/$USER?${fg[green]}New mail arrived in \$_."
-MAILCHECK=10
 
 #----------------------------------------------------------------------
 # PATH
