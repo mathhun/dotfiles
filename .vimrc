@@ -4,6 +4,7 @@ Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'derekwyatt/vim-scala'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 
@@ -16,6 +17,7 @@ set ts=2 sw=2 et
 set autochdir
 set autowrite
 let mapleader = ","
+colorscheme dracula
 
 " quickfix
 map <C-n> :cnext<CR>
