@@ -4,7 +4,7 @@ Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'derekwyatt/vim-scala'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'crusoexia/vim-dracula'
 Plug 'tpope/vim-fugitive'
 
 call plug#end()
@@ -19,7 +19,7 @@ set autochdir
 set autowrite
 let mapleader = ","
 if has("gui_macvim")
-  colorscheme dracula
+  color dracula
 endif
 set lines=999 columns=130
 
