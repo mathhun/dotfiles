@@ -2,10 +2,13 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
-Plug 'derekwyatt/vim-scala'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'crusoexia/vim-dracula'
 Plug 'tpope/vim-fugitive'
+Plug 'vim-syntastic/syntastic'
+
+Plug 'derekwyatt/vim-scala'
+Plug 'rust-lang/rust.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -42,10 +45,22 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 0
 set guifont=Migu\ 1M:h12
 
+" syntastic
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+
 "
 " scala
 "
 au BufNewFile,BufRead *.scala set tags+=$HOME/scala.tags
+
+"
+" rust
+"
+let $PATH = $HOME.'/.cargo/bin:'.$PATH
+let g:rustfmt_autosave = 1
 
 "
 " go
