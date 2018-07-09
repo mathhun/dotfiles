@@ -1,2 +1,2 @@
-alias cargo='nice -n20 cargo'
+alias c=cargo
 alias stack='nice -n20 stack -j1'
