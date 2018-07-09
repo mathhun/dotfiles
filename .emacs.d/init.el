@@ -145,7 +145,7 @@
   (cask-initialize))
 (package-initialize)
 (require 'use-package)
-(pallet-mode t)
+;;(pallet-mode t)
 
 ;;
 ;; package-install
@@ -561,8 +561,8 @@
 ;; $ cargo install racer
 ;; $ rustup component add rust-src
 
-;;(autoload 'rust-mode "rust-mode" nil t)
-(when (require 'rust-mode) (racer-mode))
+(autoload 'rust-mode "rust-mode" nil t)
+;;(when (require 'rust-mode) (racer-mode))
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
 
 (add-to-list 'exec-path (expand-file-name "~/.cargo/bin/"))

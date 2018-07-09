@@ -1,4 +1,6 @@
 *~
+*.swp
+
 .DS_Store
 .emacs.d/auto-save-list
 .emacs.d/.cask
@@ -11,6 +13,8 @@
 .emacs.d/local.el
 .emacs.d/semanticdb/
 .emacs.d/target/
+.emacs.d/elpa/
+.emacs.d/network-security.data
 
 .vim/
 
