@@ -8,6 +8,12 @@ Plug 'vim-syntastic/syntastic'
 
 Plug 'derekwyatt/vim-scala'
 Plug 'rust-lang/rust.vim'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'junegunn/fzf' " (Optional) Multi-entry selection UI.
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
@@ -61,6 +67,20 @@ au BufNewFile,BufRead *.scala set tags+=$HOME/scala.tags
 "
 let $PATH = $HOME.'/.cargo/bin:'.$PATH
 let g:rustfmt_autosave = 1
+
+"
+" LSP
+"
+" Required for operations modifying multiple buffers like rename.
+set hidden
+let g:LanguageClient_serverCommands = {
+    \ 'rust': [$HOME.'/.cargo/bin/rustup', 'run', 'nightly', 'rls'],
+    \ }
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 "
 " go

@@ -579,6 +579,10 @@
             (set (make-variable-buffer-local 'company-idle-delay) 0.3)
             (set (make-variable-buffer-local 'company-minimum-prefix-length) 3)))
 
+;; LSP
+
+(require 'lsp-mode)
+
 ;;
 ;; Lisp / Scheme / Gauche
 ;;
