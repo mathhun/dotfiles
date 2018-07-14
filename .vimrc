@@ -5,6 +5,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'crusoexia/vim-dracula'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-syntastic/syntastic'
+Plug 'scrooloose/nerdtree'
 
 Plug 'derekwyatt/vim-scala'
 Plug 'rust-lang/rust.vim'
@@ -56,6 +57,9 @@ set guifont=Migu\ 1M:h12
 "let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
+
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
 
 "
 " scala
