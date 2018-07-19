@@ -20,12 +20,13 @@
 
 .sbt/boot/
 .sbt/launchers/
+.sbt/ghpages/
 .sbt/0.13/target/
 .sbt/0.13/plugins/target
 .sbt/0.13/plugins/project
 .sbt/0.13/local.sbt
 .sbt/0.13/templates/
-.sbt/ghpages/
+.sbt/0.13/staging
 
 .sbt/1.0/staging/
 .sbt/1.0/target/

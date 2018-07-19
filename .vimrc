@@ -78,7 +78,7 @@ let g:rustfmt_autosave = 1
 " Required for operations modifying multiple buffers like rename.
 set hidden
 let g:LanguageClient_serverCommands = {
-    \ 'rust': [$HOME.'/.cargo/bin/rustup', 'run', 'nightly', 'rls'],
+    \ 'rust': [$HOME.'/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ }
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " Or map each action separately
