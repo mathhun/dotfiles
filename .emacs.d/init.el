@@ -141,10 +141,10 @@
 
 ;; curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
 ;; curl -fsSkL https://raw.github.com/cask/cask/master/go | python
-(when (require 'cask "~/.cask/cask.el" t)
-  (cask-initialize))
-(package-initialize)
-(require 'use-package)
+;; (when (require 'cask "~/.cask/cask.el" t)
+;;   (cask-initialize))
+;; (package-initialize)
+;;(require 'use-package)
 ;;(pallet-mode t)
 
 ;;
@@ -158,16 +158,16 @@
 (package-initialize)
 
 ;; PATH
-(when-mac
- (exec-path-from-shell-initialize)
- (exec-path-from-shell-copy-env "GOPATH"))
+;; (when-mac
+;;  (exec-path-from-shell-initialize)
+;;  (exec-path-from-shell-copy-env "GOPATH"))
 
 ;;
 ;; recentf
 ;;
 
 (require 'recentf)
-(setq recentf-max-saved-items 1000)
+(setq recentf-max-saved-items 100000)
 
 ;;
 ;; helm
@@ -489,15 +489,23 @@
 ;; stack install hindent hasktags stylysh-haskell structured-haskell-mode
 
 (require 'haskell-mode)
-(custom-set-variables '(haskell-process-type 'stack-ghci))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(haskell-process-auto-import-loaded-modules t)
+ '(haskell-process-log t)
+ '(haskell-process-suggest-remove-import-lines t)
+ '(haskell-process-type (quote stack-ghci))
+ '(package-selected-packages
+   (quote
+    (helm yasnippet web-mode undo-tree swoop slime rust-mode paredit lsp-mode jsx-mode js2-mode haskell-mode flycheck elscreen elixir-mode auto-complete))))
 (add-hook 'haskell-mode-hook #'hindent-mode)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (add-hook 'haskell-mode-hook (lambda () (electric-pair-mode t)))
 
-(custom-set-variables
-  '(haskell-process-suggest-remove-import-lines t)
-  '(haskell-process-auto-import-loaded-modules t)
-  '(haskell-process-log t))
+
 (eval-after-load 'haskell-mode '(progn
   (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
   (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
@@ -521,9 +529,6 @@
 ;; Scala
 ;;
 
-(use-package scala-mode
-  :interpreter
-  ("scala" . scala-mode))
 (add-to-list 'auto-mode-alist '("\.sbt$" . scala-mode))
 (add-to-list 'auto-mode-alist '("\.sc$" . scala-mode))
 (add-hook 'scala-mode-hook
@@ -689,12 +694,7 @@
 ;; writen by emacs
 ;;
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
