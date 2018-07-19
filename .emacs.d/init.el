@@ -501,7 +501,7 @@
  '(haskell-process-type (quote stack-ghci))
  '(package-selected-packages
    (quote
-    (helm yasnippet web-mode undo-tree swoop slime rust-mode paredit lsp-mode jsx-mode js2-mode haskell-mode flycheck elscreen elixir-mode auto-complete))))
+    (scala-mode helm yasnippet web-mode undo-tree swoop slime rust-mode paredit lsp-mode jsx-mode js2-mode haskell-mode flycheck elscreen elixir-mode auto-complete))))
 (add-hook 'haskell-mode-hook #'hindent-mode)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (add-hook 'haskell-mode-hook (lambda () (electric-pair-mode t)))
