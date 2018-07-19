@@ -22,6 +22,7 @@
 ;; always split horizontally
 (setq split-height-threshold 0)
 (setq split-width-threshold 0)
+(setq recenter-positions '(middle))
 
 ;; frame size
 (add-to-list 'default-frame-alist '(left . -1))
@@ -703,4 +704,3 @@
  '(helm-etags-file ((t (:foreground "Orange" :underline t)))))
 
 (put 'dired-find-alternate-file 'disabled nil)
-
