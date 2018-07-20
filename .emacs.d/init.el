@@ -167,7 +167,7 @@
 ;; recentf
 ;;
 
-(require 'recentf)
+(require 'recentf-ext)
 (setq recentf-max-saved-items 10000)
 (setq recentf-auto-cleanup 'never)
 (recentf-mode 1)
@@ -503,7 +503,7 @@
  '(haskell-process-type (quote stack-ghci))
  '(package-selected-packages
    (quote
-    (scala-mode helm yasnippet web-mode undo-tree swoop slime rust-mode paredit lsp-mode jsx-mode js2-mode haskell-mode flycheck elscreen elixir-mode auto-complete))))
+    (recentf-ext scala-mode helm yasnippet web-mode undo-tree swoop slime rust-mode paredit lsp-mode jsx-mode js2-mode haskell-mode flycheck elscreen elixir-mode auto-complete))))
 (add-hook 'haskell-mode-hook #'hindent-mode)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (add-hook 'haskell-mode-hook (lambda () (electric-pair-mode t)))
