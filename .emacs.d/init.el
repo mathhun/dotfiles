@@ -137,18 +137,6 @@
     ad-do-it))
 
 ;;
-;; cask
-;;
-
-;; curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
-;; curl -fsSkL https://raw.github.com/cask/cask/master/go | python
-;; (when (require 'cask "~/.cask/cask.el" t)
-;;   (cask-initialize))
-;; (package-initialize)
-;;(require 'use-package)
-;;(pallet-mode t)
-
-;;
 ;; package-install
 ;;
 
@@ -157,11 +145,6 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (package-initialize)
-
-;; PATH
-;; (when-mac
-;;  (exec-path-from-shell-initialize)
-;;  (exec-path-from-shell-copy-env "GOPATH"))
 
 ;;
 ;; recentf
