@@ -168,7 +168,9 @@
 ;;
 
 (require 'recentf)
-(setq recentf-max-saved-items 100000)
+(setq recentf-max-saved-items 10000)
+(setq recentf-auto-cleanup 'never)
+(recentf-mode 1)
 
 ;;
 ;; helm
