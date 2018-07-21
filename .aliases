@@ -1,2 +1,5 @@
 alias c=cargo
 alias stack='nice -n20 stack -j1'
+
+alias vi=nvim
+alias vim=nvim
