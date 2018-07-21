@@ -1,14 +1,39 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'itchyny/lightline.vim'
+" color
+Plug 'cocopon/iceberg.vim'
+Plug 'rakr/vim-one'
+Plug 'whatyouhide/vim-gotham'
+Plug 'jacoborus/tender.vim'
+" lang
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
+let mapleader = ","
+nnoremap <leader>, :e $HOME/.config/nvim/init.vim<CR>
+set ts=4 sw=4 et
+
+" color
+set t_Co=256
+set background=dark
+colorscheme one
+let g:lightline = { 'colorscheme': 'one' }
+
 " quickfix
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
+
+" ctags
+nnoremap <C-]> g<C-]>
+
+" ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 "
 " rust
