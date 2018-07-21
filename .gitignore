@@ -38,3 +38,7 @@
 
 .ammonite/history
 .ammonite/cache
+
+.config/nvim/autoload
+.config/nvim/plugged
+.config/nvim/session
