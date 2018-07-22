@@ -9,7 +9,9 @@ Plug 'whatyouhide/vim-gotham'
 Plug 'jacoborus/tender.vim'
 " lang
 Plug 'rust-lang/rust.vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'neovimhaskell/haskell-vim'
+Plug 'alx741/vim-hindent'
+Plug 'fatih/vim-go', { 'frozen': 1, 'tag': '*', 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
