@@ -30,8 +30,8 @@ set ts=4 sw=4 et
 " color
 set t_Co=256
 set background=dark
-colorscheme dracula
-let g:lightline = { 'colorscheme': 'one' }
+colorscheme gotham256
+let g:lightline = { 'colorscheme': 'gotham256' }
 
 " quickfix
 map <C-n> :cnext<CR>
