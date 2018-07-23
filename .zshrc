@@ -60,6 +60,9 @@ export GOPATH=$HOME/dev
 export PATH=$GOPATH/bin:$PATH
 export PATH=$HOME/opt/go/bin:$PATH
 
+# mac
+export HOMEBREW_MAKE_JOBS=1
+
 #----------------------------------------------------------------------
 # Zsh options
 #
