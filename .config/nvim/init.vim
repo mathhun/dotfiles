@@ -7,11 +7,19 @@ Plug 'cocopon/iceberg.vim'
 Plug 'rakr/vim-one'
 Plug 'whatyouhide/vim-gotham'
 Plug 'jacoborus/tender.vim'
+Plug 'dracula/vim'
 " lang
 Plug 'rust-lang/rust.vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent'
 Plug 'fatih/vim-go', { 'frozen': 1, 'tag': '*', 'do': ':GoUpdateBinaries' }
+" RLS
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'junegunn/fzf'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
@@ -22,7 +30,7 @@ set ts=4 sw=4 et
 " color
 set t_Co=256
 set background=dark
-colorscheme one
+colorscheme dracula
 let g:lightline = { 'colorscheme': 'one' }
 
 " quickfix
@@ -38,6 +46,20 @@ nnoremap <C-]> g<C-]>
 "
 let $PATH = $HOME.'/.cargo/bin:'.$PATH
 let g:rustfmt_autosave = 1
+
+"
+"" LSP
+"
+" Required for operations modifying multiple buffers like rename.
+set hidden
+let g:LanguageClient_serverCommands = {
+    \ 'rust': [$HOME.'/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ }
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 "
 " go
