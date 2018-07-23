@@ -41,6 +41,11 @@ nnoremap <leader>a :cclose<CR>
 " ctags
 nnoremap <C-]> g<C-]>
 
+" ctrlp
+let g:ctrlp_custom_ignore = {
+  \ 'dir': 'target$',
+  \ }
+
 "
 " rust
 "
