@@ -84,14 +84,14 @@ function peco-execute-history() {
 autoload -Uz colors; colors
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' formats '%{[38;5;166m%}%b%{[0m%}%{[38;5;78m%}:%{[0m%}'
+zstyle ':vcs_info:*' formats '%{[38;5;166m%}%b%{[38;5;214m%}:'
 zstyle ':vcs_info:*' actionformats '%F{red}[%b|%a]%f'
 function _update_vcs_info_msg() {
     LANG=en_US.UTF-8 vcs_info
     RPROMPT="%{[38;5;44m%}[${vcs_info_msg_0_}%{[38;5;44m%}%/]%{[0m%}"
 }
 add-zsh-hook precmd _update_vcs_info_msg
-PROMPT="%{[38;5;44m%}%n%{[37m%} %{[38;5;166m%}@%{[0m%} %{[38;5;78m%}%M%{[0m%} %{[38;5;44m%}%C %# %{[0m%}"
+PROMPT="%{[38;5;44m%}%n%{[37m%} %{[38;5;166m%}@ %{[38;5;78m%}%M %{[38;5;44m%}%# %{[0m%}"
 
 #
 # alias
