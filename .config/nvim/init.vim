@@ -3,6 +3,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'vimlab/split-term.vim'
 " color
 Plug 'cocopon/iceberg.vim'
 Plug 'rakr/vim-one'
