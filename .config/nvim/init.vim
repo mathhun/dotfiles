@@ -2,6 +2,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'scrooloose/nerdtree'
 " color
 Plug 'cocopon/iceberg.vim'
 Plug 'rakr/vim-one'
@@ -46,6 +47,9 @@ let g:ctrlp_custom_ignore = {
   \ 'dir': 'target$',
   \ }
 
+" nerdtree
+map <C-n> :NERDTreeToggle<CR>
+
 "
 " rust
 "
@@ -53,7 +57,7 @@ let $PATH = $HOME.'/.cargo/bin:'.$PATH
 let g:rustfmt_autosave = 1
 
 "
-"" LSP
+" LSP
 "
 " Required for operations modifying multiple buffers like rename.
 set hidden
