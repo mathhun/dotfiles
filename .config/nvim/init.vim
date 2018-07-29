@@ -3,6 +3,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
 Plug 'vimlab/split-term.vim'
 " color
 Plug 'cocopon/iceberg.vim'
@@ -32,8 +33,9 @@ set ts=4 sw=4 et
 " color
 set t_Co=256
 set background=dark
-colorscheme gotham256
-let g:lightline = { 'colorscheme': 'gotham256' }
+let g:dracula_italic = 0
+colorscheme dracula
+"let g:lightline = { 'colorscheme': 'one' }
 
 " quickfix
 map <C-n> :cnext<CR>
