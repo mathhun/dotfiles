@@ -120,6 +120,8 @@ alias -g V='| vim -R -'
 if type exa >/dev/null 2>&1; then
   alias ls='exa --time-style=long-iso --git'
 fi
+
+alias curl='curl -HExpect: '
 alias s=sbt
 alias c=cargo
 alias stack='stack -j1'
