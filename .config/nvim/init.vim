@@ -5,6 +5,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'vimlab/split-term.vim'
+Plug 'jiangmiao/auto-pairs'
 " color
 Plug 'cocopon/iceberg.vim'
 Plug 'rakr/vim-one'
