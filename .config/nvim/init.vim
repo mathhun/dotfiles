@@ -16,9 +16,14 @@ Plug 'dracula/vim'
 Plug 'rust-lang/rust.vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent'
-Plug 'fatih/vim-go', { 'frozen': 1, 'tag': '*', 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', {
+    \ 'frozen': 1,
+    \ 'tag': '*',
+    \ 'do': ':GoUpdateBinaries'
+    \ }
 " RLS
 Plug 'autozimu/LanguageClient-neovim', {
+    \ 'frozen': 1,
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
