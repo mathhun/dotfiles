@@ -122,9 +122,9 @@ if type exa >/dev/null 2>&1; then
 fi
 
 alias curl='curl -HExpect: '
-alias s=sbt
+alias sb=sbt
 alias c=cargo
-alias stack='stack -j1'
+alias s=stack
 
 alias vi=nvim
 alias vim=nvim
