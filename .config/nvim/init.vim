@@ -16,14 +16,20 @@ Plug 'dracula/vim'
 Plug 'rust-lang/rust.vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent'
-Plug 'fatih/vim-go', { 'frozen': 1, 'tag': '*', 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', {
+    \ 'frozen': 1,
+    \ 'tag': '*',
+    \ 'do': ':GoUpdateBinaries'
+    \ }
 " RLS
 Plug 'autozimu/LanguageClient-neovim', {
+    \ 'frozen': 1,
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
 Plug 'junegunn/fzf'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -73,6 +79,12 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+"
+" ALE
+"
+let g:ale_linters = {'rust': ['rle']}
+let g:ale_rust_rls_toolchain = 'stable'
 
 "
 " go

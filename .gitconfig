@@ -104,4 +104,4 @@ diff = diff-highlight | less
 # git commit
 
 [pull]
-#	ff = only
+    #ff = only
