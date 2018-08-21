@@ -30,6 +30,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'junegunn/fzf'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'w0rp/ale'
+Plug 'ElmCast/elm-vim'
 
 call plug#end()
 
