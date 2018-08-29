@@ -12,25 +12,30 @@ Plug 'rakr/vim-one'
 Plug 'whatyouhide/vim-gotham'
 Plug 'jacoborus/tender.vim'
 Plug 'dracula/vim'
-" lang
+" rust
 Plug 'rust-lang/rust.vim'
+" haskell
 Plug 'neovimhaskell/haskell-vim'
-Plug 'alx741/vim-hindent'
+"Plug 'alx741/vim-hindent'
+Plug 'sbdchd/neoformat'
+" go
 Plug 'fatih/vim-go', {
     \ 'frozen': 1,
     \ 'tag': '*',
     \ 'do': ':GoUpdateBinaries'
     \ }
+" elm
+Plug 'ElmCast/elm-vim'
 " RLS
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'frozen': 1,
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+" misc
 Plug 'junegunn/fzf'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'w0rp/ale'
-Plug 'ElmCast/elm-vim'
 
 call plug#end()
 
@@ -60,6 +65,12 @@ let g:ctrlp_custom_ignore = {
 
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
+
+" neoformat
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
 
 "
 " rust
