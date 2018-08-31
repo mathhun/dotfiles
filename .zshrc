@@ -22,6 +22,7 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
+export PATH=/usr/local/go/bin:$PATH
 
 # go
 export GOPATH=$HOME/dev
@@ -128,3 +129,7 @@ alias s=stack
 
 alias vi=nvim
 alias vim=nvim
+
+if type sccache >/dev/null 2>&1; then
+  export RUSTC_WRAPPER=$(which sccache)
+fi
