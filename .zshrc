@@ -61,6 +61,7 @@ bindkey '^r' history-incremental-pattern-search-backward
 bindkey '^s' history-incremental-pattern-search-forward
 
 # completion
+fpath+=~/.zfunc
 autoload -Uz compinit; compinit
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*' use-cache true
