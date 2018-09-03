@@ -16,7 +16,6 @@ Plug 'dracula/vim'
 Plug 'rust-lang/rust.vim'
 " haskell
 Plug 'neovimhaskell/haskell-vim'
-"Plug 'alx741/vim-hindent'
 Plug 'sbdchd/neoformat'
 " go
 Plug 'fatih/vim-go', {
@@ -72,7 +71,12 @@ augroup fmt
   autocmd BufWritePre * undojoin | Neoformat
 augroup END
 
+"
+" haskell
+"
 let g:neoformat_enabled_haskell = ['brittany', 'hindent', 'stylish-haskell']
+let g:ale_linters_explicit = 1
+let g:ale_linters = {'haskell': ['stack-ghc']}
 
 "
 " rust
