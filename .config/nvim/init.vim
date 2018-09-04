@@ -41,6 +41,7 @@ call plug#end()
 let mapleader = ","
 nnoremap <leader>, :e $HOME/.config/nvim/init.vim<CR>
 set ts=4 sw=4 et
+set noswapfile
 
 " color
 set t_Co=256
