@@ -106,6 +106,11 @@ let g:ale_linters = {'rust': ['rle']}
 let g:ale_rust_rls_toolchain = 'stable'
 
 "
+" scala
+"
+let g:neoformat_enabled_scala = []
+
+"
 " go
 "
 let $GOPATH = $HOME.'/dev'
