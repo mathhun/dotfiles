@@ -1,108 +1,28 @@
 [user]
-	name = n4to4
-	email = n4to4k@gmail.com
-
-[core]
-whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	editor = /usr/local/bin/vim
-excludesfile = /Users/naoto/.gitignore
-
-[color]
-branch = auto
-diff = auto
-status = auto
-ui = auto
-
-[color "branch"]
-current = yellow reverse
-local = yellow
-remote = green
-
-[color "diff"]
-meta = yellow bold
-frag = magenta bold
-old = red bold
-new = green bold
-
-[color "status"]
-added = yellow
-changed = green bold
-untracked = cyan bold
-
-[branch]
-autosetupmerge = true
-
+	useConfigOnly = true
+[include]
+    path = ~/.gitconfig.local
 [alias]
-st = status
-ci = commit -a
-cv = commit -v
-br = branch
-b  = branch
-co = checkout
-di = diff
-lg = log -p
-lp = log -p
-ma = checkout master
-sta = stash
-stp = stash pop
-unstage = reset HEAD --
-last = log -1 HEAD
-alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
-ta = log --graph --branches --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
-ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-refresh= !git fetch origin && git remote prune origin
-rv = remote -v
-push = push --force-with-lease
-
-[push]
-default = matching
-
-[ghq]
-root = ~/dev/src
-
-[url "git://github.com/ghc/packages-"]
-insteadOf = git://github.com/ghc/packages/
-[url "http://github.com/ghc/packages-"]
-insteadOf = http://github.com/ghc/packages/
-[url "https://github.com/ghc/packages-"]
-insteadOf = https://github.com/ghc/packages/
-[url "ssh://git@github.com/ghc/packages-"]
-insteadOf = ssh://git@github.com/ghc/packages/
-[url "git@github.com:/ghc/packages-"]
-insteadOf = git@github.com:/ghc/packages/
-
-[diff]
-
-[difftool]
-
-[merge]
-conflictstyle = diff3
-
+    co = checkout
+    st = status
+    br = branch
+    b  = branch
+    di = diff
+    d  = diff
+    cp = cherry-pick
+    pushf = push --force-with-lease
+    pr = !"f() { git fetch -fu ${2:-upstream} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+	pr-clean = !"git checkout master ; git for-each-ref refs/heads/pr/* --format=\"%(refname)\" | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+    pr-pull = !"f() { git checkout pr/$1; git pull upstream pull/$1/head; }; f"
 [pager]
-log = diff-highlight | less
-show = diff-highlight | less
-diff = diff-highlight | less
-
-# Merge:
-#
-# どちらの変更点が少ないか
-# git diff HEAD...the/other/branch -- path/to/conflicting/file
-# git diff the/other/branch...HEAD -- path/to/conflicting/file
-#
-# それぞれの変更点が明らかになる
-# git log -p HEAD..the/other/branch -- path/to/conflicting/file
-# git log -p the/other/branch..HEAD -- path/to/conflicting/file
-#
-# 変更点の一番多いファイルに戻す
-# git checkout the/other/branch -- path/to/conflicting/file
-# (あるいは、git checkout --theirs または --ours を使っても良い)
-#
-# 手動で確認して、変更をもう一方のファイルに反映する。
-#
-# すべての変更を修正・プロジェクトをビルド・コンパイル・簡単にテスト
-# git add path/to/conflicting/file
-#
-# git commit
-
+    log = diff-highlight | less
+    show = diff-highlight | less
+    diff = diff-highlight | less
 [pull]
     #ff = only
+[merge]
+    conflictstyle = diff3
+[diff]
+    compactionHeuristic = true
+[ghq]
+    root = ~/dev/src
