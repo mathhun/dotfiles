@@ -83,7 +83,6 @@ let g:ale_linters = {'haskell': ['stack-ghc']}
 " rust
 "
 let $PATH = $HOME.'/.cargo/bin:'.$PATH
-let g:rustfmt_autosave = 1
 
 "
 " LSP
