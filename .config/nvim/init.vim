@@ -43,6 +43,10 @@ nnoremap <leader>, :e $HOME/.config/nvim/init.vim<CR>
 set ts=4 sw=4 et
 set noswapfile
 
+" no auto indent
+:nnoremap <F8> :setl noai nocin nosi inde= indek=<CR>
+
+
 " color
 set t_Co=256
 set background=dark
