@@ -46,7 +46,6 @@ set noswapfile
 " no auto indent
 :nnoremap <F8> :setl noai nocin nosi inde= indek=<CR>
 
-
 " color
 set t_Co=256
 set background=dark
@@ -75,6 +74,9 @@ augroup fmt
   autocmd!
   autocmd BufWritePre * undojoin | Neoformat
 augroup END
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
 
 "
 " haskell
