@@ -23,6 +23,7 @@ export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
+export PATH=$HOME/.deno/bin:$PATH
 
 # go
 export GOPATH=$HOME/dev
@@ -136,3 +137,6 @@ if type sccache >/dev/null 2>&1; then
 fi
 
 export LESS='-R-F-X'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
