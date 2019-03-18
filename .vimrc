@@ -36,6 +36,9 @@ set lines=999 columns=130
 " kaoriya
 set cmdheight=1
 
+" esc
+inoremap jj <Esc>
+
 " quickfix
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
