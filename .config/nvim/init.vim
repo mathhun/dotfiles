@@ -79,13 +79,6 @@ augroup END
 let g:deoplete#enable_at_startup = 1
 
 "
-" haskell
-"
-let g:neoformat_enabled_haskell = ['brittany', 'hindent', 'stylish-haskell']
-let g:ale_linters_explicit = 1
-let g:ale_linters = {'haskell': ['stack-ghc']}
-
-"
 " rust
 "
 let $PATH = $HOME.'/.cargo/bin:'.$PATH
@@ -101,14 +94,25 @@ let g:LanguageClient_serverCommands = {
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " Or map each action separately
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+"nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> gd :ALEGoToDefinition<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 "
 " ALE
 "
-let g:ale_linters = {'rust': ['rle']}
+let g:ale_linters = {'rust': ['rls']}
+let g:ale_rust_rls_executable = $HOME.'/.cargo/bin/rls'
 let g:ale_rust_rls_toolchain = 'stable'
+let g:ale_completion_enabled = 1
+set completeopt=menu,menuone,preview,noselect,noinsert
+
+"
+" haskell
+"
+"let g:neoformat_enabled_haskell = ['brittany', 'hindent', 'stylish-haskell']
+"let g:ale_linters_explicit = 1
+"let g:ale_linters = {'haskell': ['stack-ghc']}
 
 "
 " scala
